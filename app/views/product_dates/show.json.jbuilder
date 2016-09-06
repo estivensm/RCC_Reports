@@ -1,0 +1,1 @@
+json.partial! "product_dates/product_date", product_date: @product_date

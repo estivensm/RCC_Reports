@@ -1,0 +1,93 @@
+<%- model_class = Report -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:count) %>:</strong></dt>
+  <dd><%= @report.count %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:code) %>:</strong></dt>
+  <dd><%= @report.code %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:autor) %>:</strong></dt>
+  <dd><%= @report.autor %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:product_name) %>:</strong></dt>
+  <dd><%= @report.product_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:customer_report_date) %>:</strong></dt>
+  <dd><%= @report.customer_report_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:report_start_date) %>:</strong></dt>
+  <dd><%= @report.report_start_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:plant_id) %>:</strong></dt>
+  <dd><%= @report.plant_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @report.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:value) %>:</strong></dt>
+  <dd><%= @report.value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:decitex) %>:</strong></dt>
+  <dd><%= @report.decitex %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:denier) %>:</strong></dt>
+  <dd><%= @report.denier %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:yarn_type_id) %>:</strong></dt>
+  <dd><%= @report.yarn_type_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:merge_id) %>:</strong></dt>
+  <dd><%= @report.merge_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:segment) %>:</strong></dt>
+  <dd><%= @report.segment %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:customer_end_use) %>:</strong></dt>
+  <dd><%= @report.customer_end_use %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:invoice_invista) %>:</strong></dt>
+  <dd><%= @report.invoice_invista %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:invoice_mag) %>:</strong></dt>
+  <dd><%= @report.invoice_mag %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:quantity_shipped) %>:</strong></dt>
+  <dd><%= @report.quantity_shipped %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:quantity_affected) %>:</strong></dt>
+  <dd><%= @report.quantity_affected %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:return_potential) %>:</strong></dt>
+  <dd><%= @report.return_potential %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:return_value) %>:</strong></dt>
+  <dd><%= @report.return_value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:claim_potential) %>:</strong></dt>
+  <dd><%= @report.claim_potential %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:claim_value) %>:</strong></dt>
+  <dd><%= @report.claim_value %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:customer_id) %>:</strong></dt>
+  <dd><%= @report.customer_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:reporter) %>:</strong></dt>
+  <dd><%= @report.reporter %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
+  <dd><%= @report.phone %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @report.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:source) %>:</strong></dt>
+  <dd><%= @report.source %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:specific_problem_id) %>:</strong></dt>
+  <dd><%= @report.specific_problem_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description_problem) %>:</strong></dt>
+  <dd><%= @report.description_problem %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:preliminary_investigation) %>:</strong></dt>
+  <dd><%= @report.preliminary_investigation %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:preliminary_conclusions) %>:</strong></dt>
+  <dd><%= @report.preliminary_conclusions %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:research_results) %>:</strong></dt>
+  <dd><%= @report.research_results %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:conclusions_plant) %>:</strong></dt>
+  <dd><%= @report.conclusions_plant %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:action_plan) %>:</strong></dt>
+  <dd><%= @report.action_plan %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:close_claim) %>:</strong></dt>
+  <dd><%= @report.close_claim %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:date_close) %>:</strong></dt>
+  <dd><%= @report.date_close %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:validation_claim) %>:</strong></dt>
+  <dd><%= @report.validation_claim %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              reports_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_report_path(@report), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              report_path(@report),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

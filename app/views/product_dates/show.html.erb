@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @product_date.number %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @product_date.date %>
+</p>
+
+<p>
+  <strong>Report:</strong>
+  <%= @product_date.report %>
+</p>
+
+<%= link_to 'Edit', edit_product_date_path(@product_date) %> |
+<%= link_to 'Back', product_dates_path %>

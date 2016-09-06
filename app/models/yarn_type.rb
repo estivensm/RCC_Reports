@@ -1,0 +1,2 @@
+class YarnType < ApplicationRecord
+end
