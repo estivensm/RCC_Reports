@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
 
 
-  
+  before_action :authenticate_user!
 
   # GET /reports
   # GET /reports.json
@@ -22,7 +22,20 @@ class ReportsController < ApplicationController
  
   # GET /reports/new
   def new
+   
+      @num = Report.maximum(:count)
+    if @num != nil
+        @num = @num + 1
+
+    else
+        @num = 1001
+    end
+    @ano = Time.now.year.to_s
+    @ano = @ano.remove("20") 
+    @count = @num
+    @code= "#{@num}-#{@ano}-MAG-CO" 
     @report = Report.new
+  
   end
 
   # GET /reports/1/edit
@@ -68,6 +81,45 @@ class ReportsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+def destroy_multiple
+
+Report.destroy(params[:reports])
+
+respond_to do |format|
+ format.html { redirect_to blog_posts_path }
+ format.json { head :no_content }
+end
+end
+
+  def get_country
+
+      @report = Plant.find(params[:id])
+      render :json => @report;
+
+    
+  end
+
+  def tracing_report
+    @report = Report.find(params[:id])
+    @seguimientos = @report.seguimientos
+    @seguimiento = Seguimiento.new
+  end
+  
+  def create_tracing
+
+    @seguimiento = Seguimiento.new 
+    @seguimiento.description = params[:description]
+    @seguimiento.attachment = params[:attachment]
+    @seguimiento.report_id =  params[:report_id]
+     @seguimiento.save
+      if @seguimiento.save
+        redirect_to :back, notice: "creaste un nuevo tracing"
+      end
+  end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

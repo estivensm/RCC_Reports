@@ -27,16 +27,17 @@
            <%= f.label :code%>
         </div>
         <div class="col-lg-10">
-          <%= f.text_field :code, :class => 'form-control' %>
+          <%= f.text_field :code,:value => @code, :class => 'form-control code' %>
         </div>
         <%=f.error_span(:code) %>
     </div>
+    <%= f.hidden_field :post_id, :value => @count %>
     <div class="form-group">
   <div class="col-lg-10">
       <%= f.label :autor %>
       </div>
       <div class="col-lg-10">
-        <%= f.text_field :autor, :class => 'form-control' %>
+        <%= f.text_field :autor,:value => "Martin Velez", :class => 'form-control autor' %>
       </div>
       <%=f.error_span(:autor) %>
     </div>
@@ -98,21 +99,27 @@
     <%= f.label :plant_id%>
     </div>
     <div class="col-lg-10">
-    <%= f.collection_select :plant_id, Plant.all, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+     <%= f.select :plant_id,
+  Plant.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+               { class: 'chosen-select plant1' }
+%>
+   
   
     </div>
     <%=f.error_span(:plant_id) %>
   </div>
   <div class="form-group">
-   <div class="col-lg-10">
-    <%= f.label :title %>
+  <div class="col-lg-10">
+   <%= f.label "Country" %>
     </div>
     <div class="col-lg-10">
-      <%= f.text_field :title, :class => 'form-control' %>
+      <%= f.text_field :title, :class => 'form-control country' %>
     </div>
     <%=f.error_span(:title) %>
   </div>
-
+   
+  
    </div>
 
 </div>
@@ -159,8 +166,12 @@
     <%= f.label :yarn_type_id %>
     </div>
     <div class="col-lg-10">
+       <%= f.select :yarn_type_id,
+  YarnType.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+               { class: 'chosen-select' }
+%>
       
-       <%= f.collection_select :yarn_type_id, YarnType.all, :id, :name, {prompt: "Select a Yern Type"}, {class: "form-control"} %>
     </div>
     <%=f.error_span(:yarn_type_id) %>
   </div>
@@ -173,8 +184,14 @@
     <%= f.label :merge_id %>
    </div>
     <div class="col-lg-10">
-      
-       <%= f.collection_select :merge_id, Merge.all, :id, :name, {prompt: "Select a Merge"}, {class: "form-control"} %>
+      <%= f.select :merge_id,
+  Merge.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+               { class: 'chosen-select' }
+%>
+
+
+
     </div>
     <%=f.error_span(:merge_id) %>
   </div>
@@ -183,8 +200,13 @@
     <%= f.label :filament_count_id %>
    </div>
     <div class="col-lg-10">
-     
-    <%= f.collection_select :filament_count_id, FilamentCount.all, :id, :name, {prompt: "Select a Filament Count"}, {class: "form-control"} %>
+     <%= f.select :filament_count_id,
+  FilamentCount.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+               { class: 'chosen-select' }
+%>
+
+   
     </div>
     <%=f.error_span(:filament_count_id) %>
   </div>
@@ -280,7 +302,7 @@
          </div>
         <div class="col-lg-10">
           
-        <%= f.select :segment, options_for_select(["Activewear", "Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]), {}, {:multiple => true, :class => "chzn-select form-control", :style => "width:450px;",:id =>"example-getting-started"} %>
+        <%= f.select :segment, options_for_select(["Activewear", "Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]), {}, {:multiple => true, :class => "chzn-select form-control example-getting-started", :style => "width:450px;",:id =>""} %>
         </div>
         <%=f.error_span(:segment) %>
       </div>
@@ -289,7 +311,8 @@
         <%= f.label :customer_end_use%>
          </div>
         <div class="col-lg-10">
-          <%= f.text_field :customer_end_use, :class => 'form-control' %>
+        
+        <%= f.select :customer_end_use, options_for_select(["Core Spinnig", "Weaving", "Swimwear", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]), {}, {:multiple => true, :class => "chzn-select form-control example-getting-started", :style => "width:450px;",:id =>""} %>
         </div>
         <%=f.error_span(:customer_end_use) %>
       </div>
@@ -385,8 +408,12 @@
     <%= f.label :customer_id %>
     </div>
     <div class="col-lg-10">
-
-       <%= f.collection_select :customer_id, Customer.all, :id, :name, {prompt: "Select a Customer"}, {class: "form-control"} %>
+      <%= f.select :customer_id,
+  Customer.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+               { class: 'chosen-select' }
+%>
+      
     </div>
     <%=f.error_span(:customer_id) %>
   </div>
@@ -449,8 +476,12 @@
     <%= f.label :specific_problem_id %>
     </div>
     <div class="col-lg-10">
-      
-    <%= f.collection_select :specific_problem_id, SpecificProblem.all, :id, :name, {prompt: "Select a Customer"}, {class: "form-control"} %>
+       <%= f.select :specific_problem_id,
+  SpecificProblem.all.map { |u| [u.name, u.id] },
+               { include_blank: true },
+               { class: 'chosen-select' }
+%>
+   
     </div>
     <%=f.error_span(:specific_problem_id) %>
   </div>
@@ -647,16 +678,16 @@ $(document).ready(function(){
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#example-getting-started').multiselect({
-           buttonWidth: '100%'
-        });
-        
-    });
+   
 </script>
 <style type="text/css" media="screen">
-.btn .caret
-{   margin-left: 66%;
 
-}
 </style>
+
+<script>
+
+  
+  
+
+
+</script>

@@ -2,16 +2,26 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:count) %></th>
-      <th><%= model_class.human_attribute_name(:code) %></th>
-      <th><%= model_class.human_attribute_name(:autor) %></th>
       <th><%= model_class.human_attribute_name(:product_name) %></th>
-      <th><%= model_class.human_attribute_name(:customer_report_date) %></th>
-      <th><%= model_class.human_attribute_name(:report_start_date) %></th>
+      <th><%= model_class.human_attribute_name(:autor) %></th>
+      <th><%= model_class.human_attribute_name(:code) %></th>
+      <th><%= model_class.human_attribute_name(:customer_report_date) %>
+      <th><%= model_class.human_attribute_name(:customer_id) %></th>
+      <th><%= model_class.human_attribute_name(:reporter) %></th>
+
+      <th>Seguimiento</th>
+
+
+
+      
+      
+      <!--<th><%= model_class.human_attribute_name(:report_start_date) %></th>
       <th><%= model_class.human_attribute_name(:plant_id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:value) %></th>
@@ -29,35 +39,30 @@
       <th><%= model_class.human_attribute_name(:return_value) %></th>
       <th><%= model_class.human_attribute_name(:claim_potential) %></th>
       <th><%= model_class.human_attribute_name(:claim_value) %></th>
-      <th><%= model_class.human_attribute_name(:customer_id) %></th>
-      <th><%= model_class.human_attribute_name(:reporter) %></th>
+     
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:source) %></th>
-      <th><%= model_class.human_attribute_name(:specific_problem_id) %></th>
-      <th><%= model_class.human_attribute_name(:description_problem) %></th>
-      <th><%= model_class.human_attribute_name(:preliminary_investigation) %></th>
-      <th><%= model_class.human_attribute_name(:preliminary_conclusions) %></th>
-      <th><%= model_class.human_attribute_name(:research_results) %></th>
-      <th><%= model_class.human_attribute_name(:conclusions_plant) %></th>
-      <th><%= model_class.human_attribute_name(:action_plan) %></th>
-      <th><%= model_class.human_attribute_name(:close_claim) %></th>
-      <th><%= model_class.human_attribute_name(:date_close) %></th>
-      <th><%= model_class.human_attribute_name(:validation_claim) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:specific_problem_id) %></th>-->
+      
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @reports.each do |report| %>
       <tr>
+
         <td><%= link_to report.id, report_path(report) %></td>
         <td><%= report.count %></td>
-        <td><%= report.code %></td>
-        <td><%= report.autor %></td>
         <td><%= report.product_name %></td>
+        <td><%= report.autor %></td>
+        <td><%= report.code %></td>
         <td><%= report.customer_report_date %></td>
-        <td><%= report.report_start_date %></td>
+        <td><%= report.customer.name %></td>
+        <td><%= report.reporter %></td>
+        <td><%=link_to "Seguimiento",
+                      new_seguimiento_path(:param1=> report.id), :class => 'btn btn-primary btn-xs' %></td>
+        <!--<td><%= report.report_start_date %></td>
         <td><%= report.plant_id %></td>
         <td><%= report.title %></td>
         <td><%= report.value %></td>
@@ -75,8 +80,7 @@
         <td><%= report.return_value %></td>
         <td><%= report.claim_potential %></td>
         <td><%= report.claim_value %></td>
-        <td><%= report.customer_id %></td>
-        <td><%= report.reporter %></td>
+        
         <td><%= report.phone %></td>
         <td><%= report.email %></td>
         <td><%= report.source %></td>
@@ -90,7 +94,7 @@
         <td><%= report.close_claim %></td>
         <td><%= report.date_close %></td>
         <td><%= report.validation_claim %></td>
-        <td><%=l report.created_at %></td>
+        <td><%=l report.created_at %></td>-->
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_report_path(report), :class => 'btn btn-default btn-xs' %>

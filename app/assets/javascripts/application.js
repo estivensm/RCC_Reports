@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require chosen-jquery
 //= require bootstrap-multiselect
 //= require twitter/bootstrap
 //= require turbolinks
@@ -138,5 +139,94 @@
         };
 })(jQuery);
 
-
+'turbolinks:load'
  
+$(document).on('turbolinks:load',function() 
+
+{
+        
+
+        $('.example-getting-started').multiselect(
+        
+        {
+           buttonWidth: '100%'
+        });
+        
+});
+
+ $(document).on('turbolinks:load',function() {
+        return $('.chosen-select').chosen(
+        {
+
+          allow_single_deselect: true,
+          no_results_text: 'No results matched',
+          width: '310px'
+        });
+});
+
+ $(document).on('turbolinks:load',function(){
+  
+        $(".decitex").change(function()
+        {
+                $d = 0;
+                $d = $(".decitex").val();
+                $d= (0.9*$d).toFixed(2);
+
+                $(".denier").val($d);
+                
+                });
+        $(".denier").change(function()
+        {
+                $d = 0;
+                $d = $(".denier").val();
+                $d= ($d/0.9).toFixed(2);
+
+                $(".decitex").val($d);
+         });
+        
+          $('.code').attr("disabled", true);
+          $('.country').attr("disabled", true);
+
+
+          $(".plant1").change(function()
+          {
+                $a = $(".plant1").val();
+                $.get("/get_country/" + $a , function(data) 
+                {
+
+                console.log(data.name);
+                console.log($a);
+                $(".country").val(data.country)
+
+
+                });
+
+          });
+
+
+          $(".borrar").click(function()
+            {
+
+              //$('.23').each(
+                  //function() 
+                  //{
+
+                    $a =  $('.24').attr('class');
+                    $.get("/delete_fields/" + $a , function(data) 
+                        {
+            console.log($a)
+
+                        });
+
+                  //});
+
+       
+
+            });
+
+
+
+
+
+});
+

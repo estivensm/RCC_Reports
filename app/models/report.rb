@@ -1,7 +1,7 @@
 class Report < ApplicationRecord
  
   before_create :insertar #inserta el count para generar el codigo
-
+  
   belongs_to :plant
   belongs_to :yarn_type
   belongs_to :merge
@@ -10,7 +10,8 @@ class Report < ApplicationRecord
   belongs_to :specific_problem
   has_many :product_images , inverse_of: :report, dependent: :destroy
   has_many :product_dates , inverse_of: :report, dependent: :destroy
-    
+  has_many :seguimientos 
+
   accepts_nested_attributes_for :product_dates #acepta atributos del modelo de product_dates
 
   accepts_nested_attributes_for :product_images #acepta atributos del modelo de product_imagenes

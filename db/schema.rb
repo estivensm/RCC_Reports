@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905200949) do
+ActiveRecord::Schema.define(version: 20160909153356) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "name"
@@ -109,10 +109,46 @@ ActiveRecord::Schema.define(version: 20160905200949) do
     t.index ["yarn_type_id"], name: "index_reports_on_yarn_type_id"
   end
 
+  create_table "seguimientos", force: :cascade do |t|
+    t.string   "attachment"
+    t.text     "description"
+    t.integer  "report_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["report_id"], name: "index_seguimientos_on_report_id"
+  end
+
   create_table "specific_problems", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tracings", force: :cascade do |t|
+    t.string   "attachment"
+    t.text     "description"
+    t.integer  "reports_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["reports_id"], name: "index_tracings_on_reports_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "nombre"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "yarn_types", force: :cascade do |t|

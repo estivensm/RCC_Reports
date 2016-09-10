@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= @seguimiento.attachment %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @seguimiento.description %>
+</p>
+
+<p>
+  <strong>Report:</strong>
+  <%= @seguimiento.report %>
+</p>
+
+<%= link_to 'Edit', edit_seguimiento_path(@seguimiento) %> |
+<%= link_to 'Back', seguimientos_path %>

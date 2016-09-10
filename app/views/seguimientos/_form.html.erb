@@ -1,0 +1,73 @@
+<td><%= link_to "volver", reports_path %></td>
+<p id="notice"><%= notice %></p>
+<%= form_for(seguimiento,:html => {class: 'form-inline'}) do |f| %>
+  <% if seguimiento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seguimiento.errors.count, "error") %> prohibited this seguimiento from being saved:</h2>
+
+      <ul>
+      <% seguimiento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="form-group">
+    <%= f.label :attachment %>
+    <%= f.file_field :attachment, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description  %>
+    <%= f.text_area :description, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :report_id %>
+    <%= f.text_field :report_id,:value => @hola, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
+<% end %>
+<h1>Tracings</h1>
+
+<table class = "table table-striped">
+  <thead>
+    <tr>
+    <th>Id</th>
+      <th>Attachment</th>
+      <th>Description</th>
+      <th>Reports</th>
+      <th colspan="3">Acciones</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seguimientos.each do |seguimiento| %>
+      <tr>
+       <td><%= seguimiento.id %></td>
+      <td><%= link_to 'descargar', seguimiento.attachment_url %></td>
+       
+        <td><%= seguimiento.description %></td>
+        <td><%= seguimiento.report.id %></td>
+        <td><%= link_to 'Show', seguimiento %></td>
+        <td><%= link_to 'Edit', edit_seguimiento_path(seguimiento) ,
+                      :class => 'btn btn-xs btn-primary'%></td>
+        <td><%= link_to 'Destroy', seguimiento, method: :delete, data: { confirm: 'Are you sure?' },
+                      :class => 'btn btn-xs btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tracing', new_seguimiento_path %>
+
+
+
+
