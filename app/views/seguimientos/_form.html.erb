@@ -50,11 +50,11 @@
     <% @seguimientos.each do |seguimiento| %>
       <tr>
        <td><%= seguimiento.id %></td>
-      <td><%= link_to 'descargar', seguimiento.attachment_url %></td>
+      <td><%= link_to 'descargar', seguimiento.attachment_url, :class => 'btn btn-xs btn-primary' %></td>
        
         <td><%= seguimiento.description %></td>
         <td><%= seguimiento.report.id %></td>
-        <td><%= link_to 'Show', seguimiento %></td>
+        <td><%= link_to 'Show', seguimiento, :class => 'btn btn-xs btn-primary' %></td>
         <td><%= link_to 'Edit', edit_seguimiento_path(seguimiento) ,
                       :class => 'btn btn-xs btn-primary'%></td>
         <td><%= link_to 'Destroy', seguimiento, method: :delete, data: { confirm: 'Are you sure?' },
@@ -71,3 +71,8 @@
 
 
 
+<style type="text/css" media="screen">
+  .btn {
+    color: white!important;
+    }
+</style>

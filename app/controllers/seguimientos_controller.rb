@@ -45,7 +45,7 @@ class SeguimientosController < ApplicationController
   def update
     respond_to do |format|
       if @seguimiento.update(seguimiento_params)
-        format.html { redirect_to @seguimiento, notice: 'Seguimiento was successfully updated.' }
+        format.html { redirect_to new_seguimiento_path(:param1=> @seguimiento.report_id), notice: 'Seguimiento was successfully updated.' }
         format.json { render :show, status: :ok, location: @seguimiento }
       else
         format.html { render :edit }
