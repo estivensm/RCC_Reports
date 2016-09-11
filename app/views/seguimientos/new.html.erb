@@ -1,5 +1,6 @@
-<%= @hola %>
-<h1>New Seguimiento</h1>
+
+<%= link_to "volver", reports_path , :class => 'btn btn-xs btn-primary volver'%>
+<h2 style = "color: gray;">Tracings <%= @report.code%></h2>
 
 <%= render 'form', seguimiento: @seguimiento %>
 
