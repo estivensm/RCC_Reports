@@ -1,2 +1,90 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-md-3">
+    
+    <div class="thumbnail">
+      <img style = "border-radius:50%" src="/assets/perfil.jpg" alt="...">
+      <div class="caption">
+        <h3 style = "text-align:center">Martin Velez</h3>
+        <p>...</p>
+      
+      </div>
+    </div>
+
+      </div>
+      <div class="col-md-4">
+        
+            <a class = "panels" href = "/reports">
+            <div class="panel panel-primary">
+               <div class="panel-heading">
+                  <h3 class="panel-title">Reportes</h3>
+               </div>
+               <div  class="panel-body">
+                  <p class = "num"><%=@reports%></p> 
+               </div>
+            </div>
+            </a>
+            <a class = "panels" href = "/reports">
+            <div class="panel panel-primary">
+               <div class="panel-heading">
+                  <h3 class="panel-title">Reportes</h3>
+               </div>
+               <div  class="panel-body">
+                  <p class = "num"><%=@size%></p> 
+               </div>
+            </div>
+            </a>
+        
+        
+      </div>
+      <div class="col-md-4">
+        
+            <a class = "panels" href = "/reports">
+            <div class="panel panel-primary">
+               <div class="panel-heading">
+                  <h3 class="panel-title">Reportes</h3>
+               </div>
+               <div  class="panel-body">
+                  <p class = "num"><%=@reports%></p> 
+               </div>
+            </div>
+            </a>
+            <a class = "panels" href = "/reports">
+            <div class="panel panel-primary">
+               <div class="panel-heading">
+                  <h3 class="panel-title">Reportes</h3>
+               </div>
+               <div  class="panel-body">
+                  <p class = "num"><%=@reports%></p> 
+               </div>
+            </div>
+            </a>
+        
+        
+      </div>
+
+   </div>
+</div>
+
+<style type="text/css" media="screen">
+  .btn{
+    color: white!important;
+    }
+    .btn-default
+    {
+    color: gray!important;
+    }
+    .panels:hover
+    {
+      color:black!important;
+      text-decoration: none!important;
+
+    }
+.num
+{
+   text-align: center;
+   margin:3px;
+   font-size: 32px;
+}  
+   
+</style>

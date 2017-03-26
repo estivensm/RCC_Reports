@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		$.ajax({
+    url: "http://otter.topsy.com/urlinfo.js?url=http://www.nytimes.com",
+    dataType: 'jsonp',
+    success: function(results){
+        console.log(results);
+    }
+});
+
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

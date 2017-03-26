@@ -1,124 +1,49 @@
 
-<p id="notice"><%= notice %></p>
 
-<div class="row">
-<div class="col-md-4 col-md-offset-8">
-<button type="button" class="btn btn-info newform">New tracing</button>
-</div>
-</div>
+<div id="contact-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title"> Seguimiento</h4>
+      </div>
 
 
-<div class="row formnew">
-  
 
-<%= form_for(seguimiento) do |f| %>
-  <% if seguimiento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(seguimiento.errors.count, "error") %> prohibited this seguimiento from being saved:</h2>
+<%= form_for([ @report, @seguimiento]) do |f| %>
+  <div class="alert alert-danger" style="display:none">
+    <ul>
+    
+    </ul>
+  </div>
+      <div class="modal-body">
 
-      <ul>
-      <% seguimiento.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
- <div class="col-md-12">
- <div class="col-md-3">
  <div class="form-group">
     <%= f.label :attachment %>
     <%= f.file_field :attachment, :class => 'form-control' %>
   </div>
-  </div>
-<div class="col-md-6">
+
+
+
   <div class="form-group">
-    <%= f.label :description  %>
-    <%= f.text_area :description, :class => 'form-control' %>
+    <%= f.label "Descripcion" %>
+    <%= f.text_area :description,  class: "form-control area" %>
   </div>
-  </div>
-<%= f.hidden_field :report_id,:value => @hola, :class => 'form-control' %>
-<div class="col-md-3">
-  <div class="form-group">
- <br>
- 
-    <%= f.submit "Guardar", :class =>'btn btn-primary' %>
-  </div>
-  </div>
+
+
+  <%= f.hidden_field :report_id,:value => @report.id, :class => 'form-control' %>
+<br>
+<br>
+  <div class="form-group text-center">
+   <%= f.submit "Guardar", class: 'btn btn-primary btnpad' %>
+   <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
   </div>
 <% end %>
+  </div>
+    </div>
+      </div>
 
-</div>
-
-<table class = "table table-striped tracing">
-  <thead>
-    <tr>
-    <th>Id</th>
-    <th>Fecha de creacion</th>
-      <th>Nombre de Archivo</th>
-      <th>Attachment</th>
-      <th>Description</th>
-   
-      <th colspan="3">Acciones</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @seguimientos.each do |seguimiento| %>
-      <tr>
-       <td><%= seguimiento.id %></td>
-       <td><%= seguimiento.created_at %></td>
-       <td><%= seguimiento.attachment %></td>
-      <td><%= link_to 'descargar', seguimiento.attachment_url, :class => 'btn btn-xs btn-primary' %></td>
-       
-        <td><%= seguimiento.description %></td>
-   
-        <td><%= link_to 'Show', seguimiento, :class => 'btn btn-xs btn-primary' %></td>
-        <td><%= link_to 'Edit', edit_seguimiento_path(seguimiento) ,
-                      :class => 'btn btn-xs btn-primary'%></td>
-        <td><%= link_to 'Destroy', seguimiento, method: :delete, data: { confirm: 'Are you sure?' },
-                      :class => 'btn btn-xs btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tracing', new_seguimiento_path %>
+      
 
 
 
-
-<style type="text/css" media="screen">
-  .btn {
-    color: white!important;
-    }
-    .formnew
-    {
-      display: none;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      padding: 32px;
-    background: #efefef;
-    border-radius: 10px;
-    }
-    .newform
-    {
-      width: 200px;
-    }
-    .tracing
-    {
-      margin-top: 20px;
-    }
-</style>
-
-<script>
-  
-  $('.newform').click(function(){
-
-  $(".formnew").fadeToggle("slow");
-
-
-  });
-</script>

@@ -26,10 +26,11 @@ body
 
 .login
 {
-	background: rgba(255, 255, 255, 1);
+	       background: rgb(255, 255, 255);
     border-radius: 10px;
     border: 2px solid #ffffff;
-    padding: 20px;
+    padding: 56px;
+    color: #ed7741;
 }
 .loginsubmit
 {
@@ -39,4 +40,8 @@ body
 .volver
 {
 	padding: 5px 20px !important;
+}
+.formsig
+{
+	margin-top: 20px;
 }

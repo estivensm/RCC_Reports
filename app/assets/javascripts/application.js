@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//require 'will_paginate/array' 
 //= require jquery_ujs
 //= require chosen-jquery
 //= require bootstrap-multiselect

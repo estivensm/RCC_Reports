@@ -1,0 +1,5 @@
+$('<%= j render "form", seguimiento: @seguimiento %>').on('hidden.bs.modal', function (e) {
+  $(this).remove();
+  $('.modal-backdrop').remove();
+}).modal();
+

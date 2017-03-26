@@ -17,4 +17,11 @@
 class Seguimiento < ApplicationRecord
   belongs_to :report
   mount_uploader :attachment, AttachmentUploader
+  def delete_seg
+    
+    @seg = Seguimiento.all
+    @seg.delete.all 
+
+  end
+
 end

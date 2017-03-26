@@ -10,7 +10,11 @@ class ReportsController < ApplicationController
     @reports = Report.all
   end
   
-  
+  def seguimientos_all
+    @report = Report.find(params[:id])
+    @seguimientos = @report.seguimientos
+    
+  end
 
 
   # GET /reports/1

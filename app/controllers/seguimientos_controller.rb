@@ -14,9 +14,7 @@ class SeguimientosController < ApplicationController
 
   # GET /seguimientos/new
   def new
-     @hola = params[:param1]
-     @report = Report.find(params[:param1])
-    @seguimientos = @report.seguimientos.order('id DESC')
+    @report = Report.find(params[:report_id])
     @seguimiento = Seguimiento.new
   end
 
@@ -27,16 +25,11 @@ class SeguimientosController < ApplicationController
   # POST /seguimientos
   # POST /seguimientos.json
   def create
+   @report = Report.find(params[:report_id])
     @seguimiento = Seguimiento.new(seguimiento_params)
 
-    respond_to do |format|
-      if @seguimiento.save
-        format.html { redirect_to new_seguimiento_path(:param1=> @seguimiento.report_id), notice: 'Seguimiento was successfully created.' }
-        format.json { render :show, status: :created, location: @seguimiento }
-      else
-        format.html { render :new }
-        format.json { render json: @seguimiento.errors, status: :unprocessable_entity }
-      end
+    if @seguimiento.save
+      redirect_to seguimientos_all_path(@report)
     end
   end
 

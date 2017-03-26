@@ -1,0 +1,126 @@
+
+<%= link_to 'New Seguimiento', new_report_seguimiento_path(@report), remote: true %>
+<div class="row">
+
+
+<div class="col-md-5">
+<div class="conteinter reporte cnt ">
+   <div class="row">
+      <div class="col-md-6 rtd"><strong>Creacion:</strong> </div>
+      <div class="col-md-6 rtd"><strong>Product Name:</strong> </div>
+      <div class="col-md-6 rtd"><strong>Autor: </strong></div>
+      <div class="col-md-6 rtd"><strong>Customer Date:</strong> </div>
+        <div class="col-md-6 rtd"><strong>Customer Name:</strong> </div>
+    <div class="col-md-6 rtd"><strong>Customer Name:</strong> </div>
+      <div class="col-md-12 rtd"><strong>Description: </strong></div>
+   </div>
+
+</div>
+<script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		theme: "theme2",//theme1
+		title:{
+			text: "Basic Column Chart - CanvasJS"              
+		},
+		animationEnabled: false,   // change to true
+		data: [              
+		{
+			// Change type to "bar", "area", "spline", "pie",etc.
+			type: "column",
+			dataPoints: [
+				{ label: "apple",  y: 10  },
+				{ label: "orange", y: 15  },
+				{ label: "banana", y: 25  },
+				{ label: "mango",  y: 30  },
+				{ label: "grape",  y: 28  }
+			]
+		}
+		]
+	});
+	chart.render();
+}
+</script>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+</div>
+<div class="col-md-7">
+
+<% @seguimientos.each do  |seg|%>
+	  <div class="conteinter reporte cnt "> 
+	   <div class="row rtr">
+  
+    
+      
+      <div class="col-md-6 rtd"><strong><i class="fa fa-calendar" aria-hidden="true"></i></strong> <%=  get_date(seg.created_at)  %></div>
+      <div class="col-md-6 rtd"><strong><i class="fa fa-paperclip" aria-hidden="true"></i> </strong><%= (link_to "attachment",seg.attachment_url, class:"linka") if seg.attachment_url %></div>
+
+<div class="col-md-12 wihtout-padding-top text-left"><strong>Description: </strong> <%= seg.description %></div>
+ 
+   </div>
+   </div>
+   <%end%>
+</div>
+	
+</div>
+
+<style>
+  .imaacc img
+   {
+   border-radius: 40px;
+   }
+   .cnt
+   {
+   border: 1px solid #c3c3c3;
+   margin-bottom: 10px;
+   }
+   .rtr
+   {
+   }
+   .rtd
+   {
+   padding: 10px;
+   }
+   .titulo
+   {
+   background:#f2f2f2;
+   }
+   hr
+   {
+   margin-top: 0px;
+   margin-bottom: 0px;
+   }
+   .reporte
+{
+      width: 95%;
+    margin-left: 2.5%;
+    margin-bottom:2.5%;
+    color:gray;
+    font-size: 12px;
+    padding: 5px 20px;
+}
+.reporte td
+{
+        width: 200px;
+    border: 1px solid #cecece;
+    padding: 5px;
+    text-align: center;
+
+    
+
+}
+.reporte th
+{
+            width: 200px;
+    border: 1px solid #cecece;
+    padding: 5px;
+    text-align: center;
+    background: #f1f1f1;
+    
+
+}
+	
+</style>

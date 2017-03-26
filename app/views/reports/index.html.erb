@@ -60,8 +60,8 @@
         <td><%= report.customer_report_date %></td>
         <td><%= report.customer.name %></td>
         <td><%= report.reporter %></td>
-        <td><%=link_to "Seguimiento",
-                      new_seguimiento_path(:param1=> report.id), :class => 'btn btn-primary btn-xs' %></td>
+        <td><%=link_to "Tracings",
+                      seguimientos_all_path(report.id), :class => 'btn btn-primary btn-xs' %></td>
         <!--<td><%= report.report_start_date %></td>
         <td><%= report.plant_id %></td>
         <td><%= report.title %></td>
