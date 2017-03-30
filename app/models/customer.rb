@@ -13,4 +13,7 @@
 
 class Customer < ApplicationRecord
 	has_many :reports
+	has_many :contacts, inverse_of: :customer, dependent: :destroy
+	accepts_nested_attributes_for :contacts, :allow_destroy => true
+
 end

@@ -69,9 +69,9 @@ class Report < ApplicationRecord
   has_many :product_dates , inverse_of: :report, dependent: :destroy
   has_many :seguimientos 
 
-  accepts_nested_attributes_for :product_dates #acepta atributos del modelo de product_dates
+  accepts_nested_attributes_for :product_dates, :allow_destroy => true #acepta atributos del modelo de product_dates
 
-  accepts_nested_attributes_for :product_images #acepta atributos del modelo de product_imagenes
+  accepts_nested_attributes_for :product_images , :allow_destroy => true#acepta atributos del modelo de product_imagenes
     
  
     

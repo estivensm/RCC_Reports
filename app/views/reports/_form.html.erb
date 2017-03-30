@@ -1,5 +1,7 @@
 
 
+  
+
 <%= nested_form_for @report, :html => { :class => "form-horizontal report" } do |f| %>
 
   <% if @report.errors.any? %>
@@ -217,75 +219,76 @@
 <br>
 <div class="row">
 
-<div class="col-lg-6">
-<div class="col-lg-10">
-    <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Product Date</h3>
-    </div>
-<%= f.fields_for :product_dates do |attachment_form|  %>
-  <div class="clearfix">
-  <div class="col-md-12" >
- 
-<div class="col-md-1" style = "margin-top:25px" >
-  <%= attachment_form.link_to_remove do %>
-<i style = "color:#e74b09;font-size: 20px" class="fa fa-trash" aria-hidden="true"></i>
-  <% end %>
-  </div>
-  <div class="col-md-2" >
-    <%= attachment_form.label :number %>
-    <%= attachment_form.text_field :number, :class => 'form-control' %>
-    </div>
-    <div class="col-md-8" >
-    <%= attachment_form.label :date %>
-    <%= attachment_form.date_field :date, :class => 'form-control' %>
+      <div class="col-lg-6">
+      <div class="col-lg-10">
+          <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Product Date</h3>
+          </div>
+      <%= f.fields_for :product_dates do |attachment_form|  %>
+        <div class="clearfix">
+        <div class="col-md-12" >
+      
+      <div class="col-md-1" style = "margin-top:25px" >
+        <%= attachment_form.link_to_remove do %>
+      <i style = "color:#e74b09;font-size: 20px" class="fa fa-trash" aria-hidden="true"></i>
+        <% end %>
+        </div>
+        <div class="col-md-2" >
+          <%= attachment_form.label :number %>
+          <%= attachment_form.text_field :number, :class => 'form-control' %>
+          </div>
+          <div class="col-md-8" >
+          <%= attachment_form.label :date %>
+          <%= attachment_form.date_field :date, :class => 'form-control' %>
 
-   
-    
-    </div>
-  </div>
+        
+          
+          </div>
+        </div>
+      </div>
+      <%end%>
+
+      <%= f.link_to_add "Add Produt Dates", :product_dates, :class => 'btn btn-primary top10' %>
+
+      </div>
+      <div class="col-lg-6">
+        <div class="col-lg-10">
+          <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Product Image</h3>
+          </div>
+          <%= f.fields_for :product_images do |attachment_form|  %>
+        <div class="clearfix">
+      <div class="col-md-12" >
+        <div class="col-md-1" style = "margin-top:25px" >
+        <%= attachment_form.link_to_remove do %>
+      <i style = "color:#e74b09;font-size: 20px" class="fa fa-trash" aria-hidden="true"></i>
+        <% end %>
+          </div>
+        
+          <div class="col-md-2" >
+          <%= attachment_form.label :number %>
+          <%= attachment_form.text_field :number, :class => 'form-control' %>
+          </div>
+          <div class="col-md-4 pad" >
+          <%= attachment_form.label :image %>
+          <%= attachment_form.file_field :image, :class => 'form-control' %>
+          </div>
+          <div class="col-md-5" >
+          <%= attachment_form.label :description %>
+          <%= attachment_form.text_field :description, :class => 'form-control' %>
+
+        
+        </div>
+          </div>
+          </div>
+
+
+      <%end%>
+       <%= f.link_to_add "Add Produt Images", :product_images, :class => 'btn btn-primary top10'  %>
+      </div>
+     
 </div>
-<%end%>
-
-<%= f.link_to_add "Add Produt Dates", :product_dates, :class => 'btn btn-primary top10' %>
-
-</div>
-<div class="col-lg-6">
-   <div class="col-lg-10">
-    <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Product Image</h3>
-    </div>
-    <%= f.fields_for :product_images do |attachment_form|  %>
-  <div class="clearfix">
- <div class="col-md-12" >
-  <div class="col-md-1" style = "margin-top:25px" >
-  <%= attachment_form.link_to_remove do %>
-<i style = "color:#e74b09;font-size: 20px" class="fa fa-trash" aria-hidden="true"></i>
-  <% end %>
-    </div>
-  
-    <div class="col-md-2" >
-    <%= attachment_form.label :number %>
-    <%= attachment_form.text_field :number, :class => 'form-control' %>
-    </div>
-    <div class="col-md-4 pad" >
-    <%= attachment_form.label :image %>
-    <%= attachment_form.file_field :image, :class => 'form-control' %>
-    </div>
-    <div class="col-md-5" >
-    <%= attachment_form.label :description %>
-    <%= attachment_form.text_field :description, :class => 'form-control' %>
-
-   
-   </div>
-    </div>
-    </div>
 
 
-<%end%>
-</div>
-<%= f.link_to_add "Add Produt Images", :product_images, :class => 'btn btn-primary top10'  %>
-    </div>
 
-
-</div>
 <br>
   <hr>
 <br>
@@ -379,14 +382,19 @@
 <div class="col-md-4" >
 
   <div class="form-group">
+  <div class="col-lg-10">
     <%= f.label :claim_potential %>
+     </div>
     <div class="col-lg-10">
       <%= f.text_field :claim_potential, :class => 'form-control' %>
     </div>
     <%=f.error_span(:claim_potential) %>
   </div>
+
   <div class="form-group">
+    <div class="col-lg-10">
     <%= f.label :claim_value %>
+      </div>
     <div class="col-lg-10">
       <%= f.text_field :claim_value, :class => 'form-control' %>
     </div>
@@ -656,7 +664,7 @@ Closing the claim
 
 
 <script>
-$(document).ready(function(){
+$(document).on('turbolinks:load',function() {
   
  $(".decitex").change(function(){
         $d = 0;
@@ -677,17 +685,3 @@ $(document).ready(function(){
 });
 </script>
 
-<script type="text/javascript">
-   
-</script>
-<style type="text/css" media="screen">
-
-</style>
-
-<script>
-
-  
-  
-
-
-</script>
