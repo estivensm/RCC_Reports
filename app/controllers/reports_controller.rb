@@ -55,6 +55,8 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
 
   # GET /reports/1/edit
   def edit
+
+  @code = @report.code
   end
 
   # POST /reports
