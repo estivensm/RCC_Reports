@@ -67,13 +67,30 @@ class Report < ApplicationRecord
   belongs_to :specific_problem
   has_many :product_images , inverse_of: :report, dependent: :destroy
   has_many :product_dates , inverse_of: :report, dependent: :destroy
-  has_many :seguimientos 
+  has_many :seguimientos , dependent: :destroy
 
   accepts_nested_attributes_for :product_dates, :allow_destroy => true #acepta atributos del modelo de product_dates
 
   accepts_nested_attributes_for :product_images , :allow_destroy => true#acepta atributos del modelo de product_imagenes
     
  
+
+def self.search(search, search1, search2 , search3)
+
+search != "" ? (scope :product, -> { where(product_name: search) }) : (scope :product, -> { where.not(product_name: nil) })
+search1 != "" ? (scope :customer, -> { where(customer_id: search1) }) : (scope :customer, -> { where.not(customer_id: nil) })
+search2 != "" ? (scope :plant, -> { where(plant_id: search2) }) : (scope :plant, -> { where.not(plant_id: nil) })  
+search3 != "" ? (scope :reporter, -> { where("reporter like '%#{search3.downcase}%' or reporter like '%#{search3.upcase}%'  or reporter like '%#{search3.capitalize}%' ") }) : (scope :reporter, -> { where.not(id: nil) }) 
+
+product.customer.plant.reporter
+
+
+end
+
+
+
+
+
     
    def insertar
     @num = Report.maximum(:count)

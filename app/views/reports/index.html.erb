@@ -1,124 +1,124 @@
 <%- model_class = Report -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:count) %></th>
-      <th><%= model_class.human_attribute_name(:product_name) %></th>
-      <th><%= model_class.human_attribute_name(:autor) %></th>
-      <th><%= model_class.human_attribute_name(:code) %></th>
-      <th><%= model_class.human_attribute_name(:customer_report_date) %>
-      <th><%= model_class.human_attribute_name(:customer_id) %></th>
-      <th><%= model_class.human_attribute_name(:reporter) %></th>
-
-      <th>Seguimiento</th>
-
-
-
-      
-      
-      <!--<th><%= model_class.human_attribute_name(:report_start_date) %></th>
-      <th><%= model_class.human_attribute_name(:plant_id) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:value) %></th>
-      <th><%= model_class.human_attribute_name(:decitex) %></th>
-      <th><%= model_class.human_attribute_name(:denier) %></th>
-      <th><%= model_class.human_attribute_name(:yarn_type_id) %></th>
-      <th><%= model_class.human_attribute_name(:merge_id) %></th>
-      <th><%= model_class.human_attribute_name(:segment) %></th>
-      <th><%= model_class.human_attribute_name(:customer_end_use) %></th>
-      <th><%= model_class.human_attribute_name(:invoice_invista) %></th>
-      <th><%= model_class.human_attribute_name(:invoice_mag) %></th>
-      <th><%= model_class.human_attribute_name(:quantity_shipped) %></th>
-      <th><%= model_class.human_attribute_name(:quantity_affected) %></th>
-      <th><%= model_class.human_attribute_name(:return_potential) %></th>
-      <th><%= model_class.human_attribute_name(:return_value) %></th>
-      <th><%= model_class.human_attribute_name(:claim_potential) %></th>
-      <th><%= model_class.human_attribute_name(:claim_value) %></th>
-     
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:source) %></th>
-      <th><%= model_class.human_attribute_name(:specific_problem_id) %></th>-->
-      
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reports.each do |report| %>
-      <tr>
-
-        <td><%= link_to report.id, report_path(report) %></td>
-        <td><%= report.count %></td>
-        <td><%= report.product_name %></td>
-        <td><%= report.autor %></td>
-        <td><%= report.code %></td>
-        <td><%= report.customer_report_date %></td>
-        <td><%= report.customer.name %></td>
-        <td><%= report.reporter %></td>
-        <td><%=link_to "Tracings",
-                      seguimientos_all_path(report.id), :class => 'btn btn-primary btn-xs' %></td>
-        <!--<td><%= report.report_start_date %></td>
-        <td><%= report.plant_id %></td>
-        <td><%= report.title %></td>
-        <td><%= report.value %></td>
-        <td><%= report.decitex %></td>
-        <td><%= report.denier %></td>
-        <td><%= report.yarn_type_id %></td>
-        <td><%= report.merge_id %></td>
-        <td><%= report.segment %></td>
-        <td><%= report.customer_end_use %></td>
-        <td><%= report.invoice_invista %></td>
-        <td><%= report.invoice_mag %></td>
-        <td><%= report.quantity_shipped %></td>
-        <td><%= report.quantity_affected %></td>
-        <td><%= report.return_potential %></td>
-        <td><%= report.return_value %></td>
-        <td><%= report.claim_potential %></td>
-        <td><%= report.claim_value %></td>
-        
-        <td><%= report.phone %></td>
-        <td><%= report.email %></td>
-        <td><%= report.source %></td>
-        <td><%= report.specific_problem_id %></td>
-        <td><%= report.description_problem %></td>
-        <td><%= report.preliminary_investigation %></td>
-        <td><%= report.preliminary_conclusions %></td>
-        <td><%= report.research_results %></td>
-        <td><%= report.conclusions_plant %></td>
-        <td><%= report.action_plan %></td>
-        <td><%= report.close_claim %></td>
-        <td><%= report.date_close %></td>
-        <td><%= report.validation_claim %></td>
-        <td><%=l report.created_at %></td>-->
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_report_path(report), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      report_path(report),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_report_path,
+   <div class="row">
+      <div class="col-md-3">
+         <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+      </div>
+      <div class="col-md-6 text-right">
+        <%= will_paginate @reports%>
+      </div>
+       <div class="col-md-3 text-right">
+         <%= link_to "New Report",new_report_path,
             :class => 'btn btn-primary' %>
-
+      </div>
+   </div>
+</div>
+ 
+<div class="row busqueda">
+   <div class="col-md-12">
+      <%= form_tag(@route, :method => "get", id: "search-form") do %>
+      <%= select_tag 'search', options_for_select(["LYCRA®fiber", "Nylon", "Elaspan ®", "T400"]),{:class => 'form-control sh', include_blank: true }%>
+      <%=select_tag 'search1', options_for_select(Customer.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh1", include_blank: true }%>
+       <%=select_tag 'search2', options_for_select(Plant.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh2", include_blank: true }%>
+      <%= text_field_tag :search3, params[:search3], placeholder: "Reporter", class: "form-control search" %>
+      
+      <%= submit_tag "Buscar", :class => "btn btn-primary sh3" %>
+      <%= link_to "Cancelar",reports_path, :class => "pdd1" %>
+      <% end %>
+   </div>
+</div>
+<table class="table table-striped">
+   <thead>
+      <tr>
+         <th><%= model_class.human_attribute_name(:code) %></th>
+         <th><%= model_class.human_attribute_name(:product_name) %></th>
+         <th><%= model_class.human_attribute_name(:autor) %></th>
+         <th><%= model_class.human_attribute_name(:customer_report_date) %>
+         <th><%= model_class.human_attribute_name(:customer_id) %></th>
+         <th>Plant</th>
+         <th><%= model_class.human_attribute_name(:reporter) %></th>
+         <th>Seguimiento</th>
+         <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+   </thead>
+   <tbody>
+      <% @reports.each do |report| %>
+      <tr>
+         <td><%= report.code %></td>
+         <td><%= report.product_name %></td>
+         <td><%= report.autor %></td>
+         <td><%= report.customer_report_date ? get_date(report.customer_report_date) : report.customer_report_date %></td>
+         <td><%= report.customer.name %></td>
+         <td><%= report.plant.name %></td>
+         <td><%= report.reporter %></td>
+         <td><%=link_to "Tracings",
+            seguimientos_all_path(report.id), :class => 'btn btn-primary btn-xs' %></td>
+         <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+               edit_report_path(report), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+               report_path(report),
+               :method => :delete,
+               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+               :class => 'btn btn-xs btn-danger' %>
+         </td>
+      </tr>
+      <% end %>
+   </tbody>
+</table>
 <style type="text/css" media="screen">
-  .btn{
-    color: white!important;
-    }
-    .btn-default
-    {
-    color: gray!important;
-    }
+   .btn{
+   color: white!important;
+   }
+   .btn-default
+   {
+   color: gray!important;
+   }
+   h1
+   {
+   margin:0px;
+   }
+   .shi
+   {
+   height:  30px !important;
+   color:gray !important;
+   font-size: 10px !important;
+   }
+   .shi1
+   {
+   width: 60px;
+   display: inline-block;
+   height:  30px !important;
+   color:gray !important;
+   font-size: 10px !important;
+   padding: 6px 2px;
+   text-align: center;
+   }
+   .busqueda
+   {
+   display: block;
+   padding: 10px;
+   background: #e8e8e8;
+   }
+   .search
+   {
+   width:200px !important;
+   height: 27px!important;
+   display:inline-block !important;
+   }
+   .pdd1  {
+color:#e74b09 !important;
+   }
+   .pdd1:hover  {
+color:#e74b09 !important;
+   }
 </style>
+
+<script>
+ $('.sh').val(<%=params[:search]%>) ;
+ $('.sh1').val(<%=params[:search1]%>) ;  
+ $('.sh2').val(<%=params[:search2]%>) ;
+ $('.sh3').val(<%=params[:search3]%>) ;  
+
+
+</script>

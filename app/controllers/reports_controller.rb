@@ -7,7 +7,18 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
+if params[:search] || params[:search1] || params[:search2] || params[:search3]
+
+    @reports1 = Report.search(params[:search],params[:search1],params[:search2],params[:search3])
+
+  else 
+      
+       @reports1 = Report.all
+
+  end
+
+@reports = @reports1.paginate(page: params[:page],:per_page => 30)
+
   end
   
   def seguimientos_all

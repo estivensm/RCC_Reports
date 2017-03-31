@@ -227,7 +227,37 @@ $(document).on('turbolinks:load',function()
 
 
 
+ $('.sh').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Product name",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
 
+      $('.sh1').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Customer",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+$('.sh2').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Plant",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
 
 });
 

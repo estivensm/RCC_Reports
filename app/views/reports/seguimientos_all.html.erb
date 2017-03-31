@@ -1,50 +1,47 @@
+<div class="page-header">
+   <div class="row">
+      <div class="col-md-3">
+         <h1>Seguimientos</h1>
+      </div>
+      <div class="col-md-6 text-right">
+    
+      </div>
+       <div class="col-md-3 text-right">
+        <%= link_to 'New Seguimiento', new_report_seguimiento_path(@report), remote: true, class: "btn btn-primary" %>
+      </div>
+   </div>
+</div>
 
-<%= link_to 'New Seguimiento', new_report_seguimiento_path(@report), remote: true %>
+
+
+
+
 <div class="row">
 
 
 <div class="col-md-5">
 <div class="conteinter reporte cnt ">
    <div class="row">
-      <div class="col-md-6 rtd"><strong>Creacion:</strong> </div>
-      <div class="col-md-6 rtd"><strong>Product Name:</strong> </div>
-      <div class="col-md-6 rtd"><strong>Autor: </strong></div>
-      <div class="col-md-6 rtd"><strong>Customer Date:</strong> </div>
-        <div class="col-md-6 rtd"><strong>Customer Name:</strong> </div>
-    <div class="col-md-6 rtd"><strong>Customer Name:</strong> </div>
-      <div class="col-md-12 rtd"><strong>Description: </strong></div>
+      <div class="col-md-6 rtd"><strong>Creacion:</strong> <%= get_date(@report.created_at) %> </div>
+       <div class="col-md-6 rtd"><strong>Code:</strong> <%=@report.code %> </div>
+      <div class="col-md-6 rtd"><strong>Product Name:</strong> <%= @report.product_name %></div>
+      <div class="col-md-6 rtd"><strong>Autor: </strong> <%= @report.autor %></div>
+      <div class="col-md-6 rtd"><strong>Customer Date: </strong><%= @report.customer_report_date ? get_date(@report.customer_report_date) : @report.customer_report_date %> </div>
+        
+    <div class="col-md-6 rtd"><strong>Customer Name:</strong> <%= @report.customer.name %> </div>
+    <div class="col-md-6 rtd"><strong>Plant:</strong> <%= @report.plant.name %> </div>
+    <div class="col-md-6 rtd"><strong>Reporter:</strong> <%= @report.reporter %> </div>
+      <div class="col-md-12 rtd"><strong>Description: </strong><%= @report.description_problem %></div>
    </div>
 
 </div>
-<script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script type="text/javascript">
 
-window.onload = function () {
-	var chart = new CanvasJS.Chart("chartContainer", {
-		theme: "theme2",//theme1
-		title:{
-			text: "Basic Column Chart - CanvasJS"              
-		},
-		animationEnabled: false,   // change to true
-		data: [              
-		{
-			// Change type to "bar", "area", "spline", "pie",etc.
-			type: "column",
-			dataPoints: [
-				{ label: "apple",  y: 10  },
-				{ label: "orange", y: 15  },
-				{ label: "banana", y: 25  },
-				{ label: "mango",  y: 30  },
-				{ label: "grape",  y: 28  }
-			]
-		}
-		]
-	});
-	chart.render();
-}
-</script>
+  
+       
 
-<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+
+
 
 </div>
 <div class="col-md-7">
@@ -56,7 +53,7 @@ window.onload = function () {
     
       
       <div class="col-md-6 rtd"><strong><i class="fa fa-calendar" aria-hidden="true"></i></strong> <%=  get_date(seg.created_at)  %></div>
-      <div class="col-md-6 rtd"><strong><i class="fa fa-paperclip" aria-hidden="true"></i> </strong><%= (link_to "attachment",seg.attachment_url, class:"linka") if seg.attachment_url %></div>
+      <div class="col-md-6 rtd"><strong><i class="fa fa-paperclip" aria-hidden="true"></i> </strong><%= (link_to "#{seg.attachment.file.filename}",seg.attachment_url, class:"linka") if seg.attachment_url %></div>
 
 <div class="col-md-12 wihtout-padding-top text-left"><strong>Description: </strong> <%= seg.description %></div>
  
@@ -121,6 +118,14 @@ window.onload = function () {
     background: #f1f1f1;
     
 
+}
+.linka
+{
+
+color: #e74b09 !important;
+}
+strong
+{    color: #e74b09 !important;
 }
 	
 </style>
