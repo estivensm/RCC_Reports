@@ -161,7 +161,7 @@ $(document).on('turbolinks:load',function()
 
           allow_single_deselect: true,
           no_results_text: 'No results matched',
-          width: '310px'
+          width: '250px'
         });
 });
 

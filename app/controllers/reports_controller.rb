@@ -37,7 +37,8 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
  
   # GET /reports/new
   def new
-   
+   @plants = Plant.all
+    @yarns = YarnType.all
       @num = Report.maximum(:count)
     if @num != nil
         @num = @num + 1
@@ -136,6 +137,21 @@ end
       end
   end
 
+def create_plant
+  
+   a =  Plant.new(name:params[:name], country:params[:country])
+   a.save
+   @plants = Plant.all.order(created_at: :desc)
+
+
+end
+def create_yarn
+  
+   a =  YarnType.new(name:params[:name])
+   a.save
+   @yarns = YarnType.all.order(created_at: :desc)
+
+end
   
 
   private

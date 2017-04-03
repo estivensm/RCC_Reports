@@ -101,11 +101,11 @@
     <%= f.label :plant_id%>
     </div>
     <div class="col-lg-10">
-     <%= f.select :plant_id,
-  Plant.all.map { |u| [u.name, u.id] },
-               { include_blank: true },
-               { class: 'chosen-select plant1' }
-%>
+      <div class="field">
+    <%= render "field_plant" , f: f  %>  
+
+
+    </div>
    
   
     </div>
@@ -168,11 +168,11 @@
     <%= f.label :yarn_type_id %>
     </div>
     <div class="col-lg-10">
-       <%= f.select :yarn_type_id,
-  YarnType.all.map { |u| [u.name, u.id] },
-               { include_blank: true },
-               { class: 'chosen-select' }
-%>
+          <div class="field_yarn">
+    <%= render "field_yarn" , f: f  %>  
+
+
+    </div>
       
     </div>
     <%=f.error_span(:yarn_type_id) %>
@@ -661,7 +661,8 @@ Closing the claim
   </div>
 
 <% end %>
-
+   <%= render "form_plant"%>
+    <%= render "form_yarn"%>
 
 <script>
 $(document).on('turbolinks:load',function() {
@@ -683,5 +684,55 @@ $(document).on('turbolinks:load',function() {
     });
 
 });
+
+
+
+function myFunction_plant() {
+    $(".myForm_plant").submit();
+
+    var n = $('#name').val();
+    var c = $('#country').val();
+ 
+      
+     $.ajax({
+     url :"/create_plant",
+     type: "POST",
+     data: {
+        "name": n,
+        "country": c,
+           },
+     success: function(response){
+      
+
+     },
+     error:function(response){
+         
+     }
+ });  
+   }
+
+   function myFunction_yarn() {
+    $(".myForm_yarn").submit();
+
+    var n = $('#name_yarn').val();
+
+ 
+      
+     $.ajax({
+     url :"/create_yarn",
+     type: "POST",
+     data: {
+        "name": n,
+
+           },
+     success: function(response){
+      
+
+     },
+     error:function(response){
+         
+     }
+ });  
+   }
 </script>
 
