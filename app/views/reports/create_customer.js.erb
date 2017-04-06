@@ -1,0 +1,13 @@
+
+$('#my-modal_customer').modal('hide');
+
+       $('.field_customer').html('<%= j render "field_customer", customer: @customer %>');
+        $('.pri').addClass("chosen-select");
+
+         $('.chosen-select').chosen(
+        {
+
+          allow_single_deselect: true,
+          no_results_text: 'No results matched',
+          width: '250px'
+        });

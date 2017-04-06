@@ -38,7 +38,11 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
   # GET /reports/new
   def new
    @plants = Plant.all
-    @yarns = YarnType.all
+   @yarns = YarnType.all
+   @merges = Merge.all
+   @filaments = FilamentCount.all
+   @customers = Customer.all
+   @problems = SpecificProblem.all
       @num = Report.maximum(:count)
     if @num != nil
         @num = @num + 1
@@ -150,6 +154,38 @@ def create_yarn
    a =  YarnType.new(name:params[:name])
    a.save
    @yarns = YarnType.all.order(created_at: :desc)
+
+end
+
+def create_merge
+  
+   a =  Merge.new(name:params[:name])
+   a.save
+   @merges = Merge.all.order(created_at: :desc)
+
+end
+
+def create_filament
+  
+   a =  FilamentCount.new(name:params[:name])
+   a.save
+   @filaments = FilamentCount.all.order(created_at: :desc)
+
+end
+
+def create_customer
+  
+   a =  Customer.new(name:params[:name],country:params[:country],address:params[:address],city:params[:city])
+   a.save
+   @customers = Customer.all.order(created_at: :desc)
+
+end
+
+def create_problem
+  
+   a =  SpecificProblem.new(name:params[:name])
+   a.save
+   @problems = SpecificProblem.all.order(created_at: :desc)
 
 end
   

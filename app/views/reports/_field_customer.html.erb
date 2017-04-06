@@ -1,0 +1,32 @@
+<select class="form-control sel pri chosen-select" name="report[customer_id]" id="customer_id">
+<% @customers.each do  |customer|%>
+<option value="<%=customer.id%>"><%=customer.name%></option>
+<%end%>
+</select>
+
+    <button type="button" class="bt " data-toggle="modal" data-target="#myModal_customer"><i class="fa fa-plus" aria-hidden="true"></i>
+</button>
+
+
+<style>
+.bt
+{
+    padding: 0px 0px;
+    background: white;
+    color: #46b8da;
+    border: none;
+} 
+</style>
+
+<script>
+  $('.bt').click(function() {
+    // body...
+
+   $('#name_customer').val("");
+   $('#name_country').val("");
+   $('#name_address').val("");
+   $('#name_city').val("");
+  
+ 
+  });
+</script>

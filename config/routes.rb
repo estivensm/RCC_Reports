@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   get "seguimientos_all/:id", to: "reports#seguimientos_all", as: "seguimientos_all"
   post "create_plant", to: "reports#create_plant" , as: "create_plant"
   post "create_yarn", to: "reports#create_yarn" , as: "create_yarn"
-
+  post "create_merge", to: "reports#create_merge" , as: "create_merge"
+  post "create_filament", to: "reports#create_filament" , as: "create_filament"
+  post "create_customer", to: "reports#create_customer" , as: "create_customer"
+  post "create_problem", to: "reports#create_problem" , as: "create_problem"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

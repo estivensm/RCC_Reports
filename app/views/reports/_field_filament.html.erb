@@ -1,0 +1,29 @@
+<select class="form-control sel pri chosen-select" name="report[filament_count_id]" id="filament_count_id">
+<% @filaments.each do  |filament|%>
+<option value="<%=filament.id%>"><%=filament.name%></option>
+<%end%>
+</select>
+
+    <button type="button" class="bt " data-toggle="modal" data-target="#myModal_filament"><i class="fa fa-plus" aria-hidden="true"></i>
+</button>
+
+
+<style>
+.bt
+{
+    padding: 0px 0px;
+    background: white;
+    color: #46b8da;
+    border: none;
+} 
+</style>
+
+<script>
+  $('.bt').click(function() {
+    // body...
+
+   $('#name_filament').val("");
+  
+ 
+  });
+</script>

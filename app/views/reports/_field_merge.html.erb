@@ -1,0 +1,29 @@
+<select class="form-control sel pri chosen-select" name="report[merge_id]" id="merge_id">
+<% @merges.each do  |merge|%>
+<option value="<%=merge.id%>"><%=merge.name%></option>
+<%end%>
+</select>
+
+    <button type="button" class="bt " data-toggle="modal" data-target="#myModal_merge"><i class="fa fa-plus" aria-hidden="true"></i>
+</button>
+
+
+<style>
+.bt
+{
+    padding: 0px 0px;
+    background: white;
+    color: #46b8da;
+    border: none;
+} 
+</style>
+
+<script>
+  $('.bt').click(function() {
+    // body...
+
+   $('#name_merge').val("");
+  
+ 
+  });
+</script>

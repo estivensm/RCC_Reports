@@ -186,12 +186,11 @@
     <%= f.label :merge_id %>
    </div>
     <div class="col-lg-10">
-      <%= f.select :merge_id,
-  Merge.all.map { |u| [u.name, u.id] },
-               { include_blank: true },
-               { class: 'chosen-select' }
-%>
+   <div class="field_merge">
+    <%= render "field_merge" , f: f  %>  
 
+
+    </div>
 
 
     </div>
@@ -202,12 +201,11 @@
     <%= f.label :filament_count_id %>
    </div>
     <div class="col-lg-10">
-     <%= f.select :filament_count_id,
-  FilamentCount.all.map { |u| [u.name, u.id] },
-               { include_blank: true },
-               { class: 'chosen-select' }
-%>
+    <div class="field_filament">
+    <%= render "field_filament" , f: f  %>  
 
+
+    </div>
    
     </div>
     <%=f.error_span(:filament_count_id) %>
@@ -416,11 +414,11 @@
     <%= f.label :customer_id %>
     </div>
     <div class="col-lg-10">
-      <%= f.select :customer_id,
-  Customer.all.map { |u| [u.name, u.id] },
-               { include_blank: true },
-               { class: 'chosen-select' }
-%>
+       <div class="field_customer">
+    <%= render "field_customer" , f: f  %>  
+
+
+    </div>
       
     </div>
     <%=f.error_span(:customer_id) %>
@@ -484,11 +482,11 @@
     <%= f.label :specific_problem_id %>
     </div>
     <div class="col-lg-10">
-       <%= f.select :specific_problem_id,
-  SpecificProblem.all.map { |u| [u.name, u.id] },
-               { include_blank: true },
-               { class: 'chosen-select' }
-%>
+    <div class="field_problem">
+    <%= render "field_problem" , f: f  %>  
+
+
+    </div>
    
     </div>
     <%=f.error_span(:specific_problem_id) %>
@@ -663,6 +661,10 @@ Closing the claim
 <% end %>
    <%= render "form_plant"%>
     <%= render "form_yarn"%>
+     <%= render "form_merge"%>
+      <%= render "form_filament"%>
+       <%= render "form_customer"%>
+        <%= render "form_problem"%>
 
 <script>
 $(document).on('turbolinks:load',function() {
@@ -734,5 +736,108 @@ function myFunction_plant() {
      }
  });  
    }
+
+   function myFunction_merge() {
+    $(".myForm_merge").submit();
+
+    var n = $('#name_merge').val();
+
+ 
+      
+     $.ajax({
+     url :"/create_merge",
+     type: "POST",
+     data: {
+        "name": n,
+
+           },
+     success: function(response){
+      
+
+     },
+     error:function(response){
+         
+     }
+ });  
+   }
+
+      function myFunction_filament() {
+    $(".myForm_filament").submit();
+
+    var n = $('#name_filament').val();
+
+ 
+      
+     $.ajax({
+     url :"/create_filament",
+     type: "POST",
+     data: {
+        "name": n,
+
+           },
+     success: function(response){
+      
+
+     },
+     error:function(response){
+         
+     }
+ });  
+   }
+
+      function myFunction_customer() {
+    $(".myForm_customer").submit();
+
+    var n = $('#name_customer').val();
+    var c = $('#country_customer').val();
+    var a = $('#address_customer').val();
+    var ci = $('#city_customer').val();
+
+ 
+      
+     $.ajax({
+     url :"/create_customer",
+     type: "POST",
+     data: {
+        "name": n,
+         "country": c,
+          "address": a,
+           "city": ci,
+
+           },
+     success: function(response){
+      
+
+     },
+     error:function(response){
+         
+     }
+ });  
+   }
+
+function myFunction_problem() {
+    $(".myForm_problem").submit();
+
+    var n = $('#name_problem').val();
+
+ 
+      
+     $.ajax({
+     url :"/create_problem",
+     type: "POST",
+     data: {
+        "name": n,
+
+           },
+     success: function(response){
+      
+
+     },
+     error:function(response){
+         
+     }
+ });  
+   }
+
 </script>
 

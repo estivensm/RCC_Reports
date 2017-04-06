@@ -1,71 +1,83 @@
-<div class="page-header">
+
+  <br>
    <div class="row">
       <div class="col-md-3">
-         <h1>Seguimientos</h1>
+         <h1 style = "font-size:25px">Reporte</h1>
+      </div>
+   
+   </div>
+<br>
+<div class="row">
+   <div class="col-md-12">
+      <div class="conteinter reporte cnt ">
+         <div class="row">
+            <div class="col-md-3 rtd"><strong>Creacion:</strong> <%= get_date(@report.created_at) %> </div>
+            <div class="col-md-3 rtd"><strong>Code:</strong> <%=@report.code %> </div>
+            <div class="col-md-3 rtd"><strong>Product Name:</strong> <%= @report.product_name %></div>
+            <div class="col-md-3 rtd"><strong>Autor: </strong> <%= @report.autor %></div>
+            <div class="col-md-3 rtd"><strong>Customer Date: </strong><%= @report.customer_report_date ? get_date(@report.customer_report_date) : @report.customer_report_date %> </div>
+            <div class="col-md-3 rtd"><strong>Customer Name:</strong> <%= @report.customer.name %> </div>
+            <div class="col-md-3 rtd"><strong>Plant:</strong> <%= @report.plant.name %> </div>
+            <div class="col-md-3 rtd"><strong>Reporter:</strong> <%= @report.reporter %> </div>
+            <div class="col-md-12 rtd"><strong>Description: </strong><%= @report.description_problem %></div>
+         </div>
+      </div>
+   </div>
+   </div>
+<br>
+   <div class="row">
+      <div class="col-md-3">
+         <h1 style = "font-size:25px">Seguimientos</h1>
       </div>
       <div class="col-md-6 text-right">
-    
       </div>
-       <div class="col-md-3 text-right">
-        <%= link_to 'New Seguimiento', new_report_seguimiento_path(@report), remote: true, class: "btn btn-primary" %>
+      <div class="col-md-3 text-right">
+         <%= link_to 'New Seguimiento', new_report_seguimiento_path(@report), remote: true, class: "btn btn-primary" %>
       </div>
    </div>
-</div>
 
+    <div class="row">
+   <div class="col-md-12">
+      <div class="row rtr">
+         
+           <div class="row">
+             
+          
+            <div class="col-md-2 rtd"><strong><i class="fa fa-calendar" aria-hidden="true"></i> Fecha</strong></div>
+         
+         <div class="col-md-2 rtd"><strong><i class="fa fa-paperclip" aria-hidden="true"></i> Attchment</strong></div>
+         <div class="col-md-6 rtd"><strong>Description </strong></div>
+          <div class="col-md-2 rtd"></div>
+         </div>
+         <% @seguimientos.each do  |seg|%>
+         <div class="row">
+         <div class="col-md-2 rtd"> <%=  get_date(seg.created_at)  %></div>
+         <div class="col-md-2 rtd"><%= (link_to "Attchment",seg.attachment_url, class:"linka") if seg.attachment_url %></div>
+         <div class="col-md-6 rtd"> <%= seg.description %></div>
+          <div class="col-md-2 rtd">
+            <%= link_to  edit_report_seguimiento_path(@report,seg),remote: true, :class => "opciones" do %>
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    <% end %>
+                                    <%= link_to  report_seguimiento_path(@report,seg),  method: :delete, data: { confirm: 'Are you sure?' }, :class => "opciones" do %>
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    <% end %>
 
-
-
-
-<div class="row">
-
-
-<div class="col-md-5">
-<div class="conteinter reporte cnt ">
-   <div class="row">
-      <div class="col-md-6 rtd"><strong>Creacion:</strong> <%= get_date(@report.created_at) %> </div>
-       <div class="col-md-6 rtd"><strong>Code:</strong> <%=@report.code %> </div>
-      <div class="col-md-6 rtd"><strong>Product Name:</strong> <%= @report.product_name %></div>
-      <div class="col-md-6 rtd"><strong>Autor: </strong> <%= @report.autor %></div>
-      <div class="col-md-6 rtd"><strong>Customer Date: </strong><%= @report.customer_report_date ? get_date(@report.customer_report_date) : @report.customer_report_date %> </div>
-        
-    <div class="col-md-6 rtd"><strong>Customer Name:</strong> <%= @report.customer.name %> </div>
-    <div class="col-md-6 rtd"><strong>Plant:</strong> <%= @report.plant.name %> </div>
-    <div class="col-md-6 rtd"><strong>Reporter:</strong> <%= @report.reporter %> </div>
-      <div class="col-md-12 rtd"><strong>Description: </strong><%= @report.description_problem %></div>
-   </div>
-
-</div>
-
-  
-       
-
-
-
-
-
-</div>
-<div class="col-md-7">
-
-<% @seguimientos.each do  |seg|%>
-	  <div class="conteinter reporte cnt "> 
-	   <div class="row rtr">
-  
-    
+          </div>
+         </div>
+         <hr style = "border-top: 1px solid rgba(224, 224, 224, 0.65) !important">
+         <%end%>
       
-      <div class="col-md-6 rtd"><strong><i class="fa fa-calendar" aria-hidden="true"></i></strong> <%=  get_date(seg.created_at)  %></div>
-      <div class="col-md-6 rtd"><strong><i class="fa fa-paperclip" aria-hidden="true"></i> </strong><%= (link_to "Attchment",seg.attachment_url, class:"linka") if seg.attachment_url %></div>
-
-<div class="col-md-12 wihtout-padding-top text-left"><strong>Description: </strong> <%= seg.description %></div>
- 
    </div>
-   </div>
-   <%end%>
+  </div>
 </div>
-	
 </div>
-
 <style>
-  .imaacc img
+.row
+{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+   .imaacc img
    {
    border-radius: 40px;
    }
@@ -91,41 +103,34 @@
    margin-bottom: 0px;
    }
    .reporte
-{
-      width: 95%;
-    margin-left: 2.5%;
-    margin-bottom:2.5%;
-    color:gray;
-    font-size: 12px;
-    padding: 5px 20px;
-}
-.reporte td
-{
-        width: 200px;
-    border: 1px solid #cecece;
-    padding: 5px;
-    text-align: center;
-
-    
-
-}
-.reporte th
-{
-            width: 200px;
-    border: 1px solid #cecece;
-    padding: 5px;
-    text-align: center;
-    background: #f1f1f1;
-    
-
-}
-.linka
-{
-
-color: #e74b09 !important;
-}
-strong
-{    color: #e74b09 !important;
-}
-	
+   {
+   width: 95%;
+   margin-left: 2.5%;
+   margin-bottom:2.5%;
+   color:gray;
+   font-size: 12px;
+   padding: 5px 20px;
+   }
+   .reporte td
+   {
+   width: 200px;
+   border: 1px solid #cecece;
+   padding: 5px;
+   text-align: center;
+   }
+   .reporte th
+   {
+   width: 200px;
+   border: 1px solid #cecece;
+   padding: 5px;
+   text-align: center;
+   background: #f1f1f1;
+   }
+   .linka
+   {
+   color: #e74b09 !important;
+   }
+   strong
+   {    color: #e74b09 !important;
+   }
 </style>

@@ -20,6 +20,7 @@ class SeguimientosController < ApplicationController
 
   # GET /seguimientos/1/edit
   def edit
+     @report = Report.find(params[:report_id])
   end
 
   # POST /seguimientos
@@ -36,23 +37,20 @@ class SeguimientosController < ApplicationController
   # PATCH/PUT /seguimientos/1
   # PATCH/PUT /seguimientos/1.json
   def update
-    respond_to do |format|
-      if @seguimiento.update(seguimiento_params)
-        format.html { redirect_to new_seguimiento_path(:param1=> @seguimiento.report_id), notice: 'Seguimiento was successfully updated.' }
-        format.json { render :show, status: :ok, location: @seguimiento }
-      else
-        format.html { render :edit }
-        format.json { render json: @seguimiento.errors, status: :unprocessable_entity }
-      end
-    end
+    @report = Report.find(params[:report_id])
+   if @seguimiento.update(seguimiento_params)
+        redirect_to seguimientos_all_path(@report)
+         end
   end
 
   # DELETE /seguimientos/1
   # DELETE /seguimientos/1.json
   def destroy
+       @report = Report.find(params[:report_id])
+
     @seguimiento.destroy
     respond_to do |format|
-      format.html { redirect_to seguimientos_url, notice: 'Seguimiento was successfully destroyed.' }
+      format.html { redirect_to seguimientos_all_path(@report), notice: 'Seguimiento was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

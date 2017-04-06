@@ -58,3 +58,19 @@ h1
 	color:#e74b09 !important;
 	margin: 0px !important;
 }
+  .opciones
+    {
+    color:#7a7a7a;
+    margin-right:10px;
+    font-size:16px;
+    }
+     .opciones:focus
+    {
+    color:#7a7a7a;
+    
+    }
+     .opciones:hover
+    {
+   text-decoration:none;
+   color:#7a7a7a !important;
+    }

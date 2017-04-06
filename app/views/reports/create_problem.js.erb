@@ -1,0 +1,13 @@
+
+$('#my-modal_problem').modal('hide');
+
+       $('.field_problem').html('<%= j render "field_problem", plants: @problems %>');
+        $('.pri').addClass("chosen-select");
+
+         $('.chosen-select').chosen(
+        {
+
+          allow_single_deselect: true,
+          no_results_text: 'No results matched',
+          width: '250px'
+        });
