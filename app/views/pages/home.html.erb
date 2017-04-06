@@ -1,18 +1,21 @@
-<div class="container-fluid">
+
+<br><div class="container-fluid">
    <div class="row">
       <div class="col-md-3">
     
     <div class="thumbnail">
-      <img style = "border-radius:50%" src="/assets/perfil.jpg" alt="...">
+      <img style = "border-radius:50%" src="https://c1.staticflickr.com/3/2913/33491373720_7c4a0b0b4c_n.jpg" alt="...">
       <div class="caption">
         <h3 style = "text-align:center">Martin Velez</h3>
-        <p>...</p>
+        
       
       </div>
     </div>
 
       </div>
-      <div class="col-md-4">
+      <br>
+      <div class="col-md-9">
+      <div class="col-md-6">
         
             <a class = "panels" href = "/reports">
             <div class="panel panel-primary">
@@ -24,45 +27,32 @@
                </div>
             </div>
             </a>
-            <a class = "panels" href = "/reports">
-            <div class="panel panel-primary">
-               <div class="panel-heading">
-                  <h3 class="panel-title">Reportes</h3>
-               </div>
-               <div  class="panel-body">
-                  <p class = "num"><%=@size%></p> 
-               </div>
-            </div>
-            </a>
+        
         
         
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         
             <a class = "panels" href = "/reports">
             <div class="panel panel-primary">
                <div class="panel-heading">
-                  <h3 class="panel-title">Reportes</h3>
+                  <h3 class="panel-title">Seguimientos</h3>
                </div>
                <div  class="panel-body">
                   <p class = "num"><%=@reports%></p> 
                </div>
             </div>
             </a>
-            <a class = "panels" href = "/reports">
-            <div class="panel panel-primary">
-               <div class="panel-heading">
-                  <h3 class="panel-title">Reportes</h3>
-               </div>
-               <div  class="panel-body">
-                  <p class = "num"><%=@reports%></p> 
-               </div>
-            </div>
-            </a>
+         
         
         
       </div>
+      <div class="col-md-12">
 
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+       </div>
+ </div>
    </div>
 </div>
 
@@ -86,5 +76,51 @@
    margin:3px;
    font-size: 32px;
 }  
+
    
 </style>
+
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'line'
+    },
+    title: {
+        text: 'Monthly Reports'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    },
+    yAxis: {
+        title: {
+            text: 'Quantity'
+        }
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            enableMouseTracking: false
+        }
+    },
+    series: [{
+        name: 'LYCRA®fiber',
+        data: [7, 8, 9, 14, 18, 21, 25, 26, 23, 18, 13, 9]
+    }, {
+        name: 'Nylon',
+        data: [3, 4, 5, 8, 11, 15, 17, 16, 14, 10, 6, 4]
+    },
+     {
+        name: 'Elaspan ®',
+        data: [2, 3, 1, 12, 10, 15, 3, 1, 4, 5, 1, 8]
+    },
+     {
+        name: 'T400',
+        data: [4, 5, 1, 9, 17, 3, 2, 14, 8, 9, 3, 5]
+    },]
+});
+</script>

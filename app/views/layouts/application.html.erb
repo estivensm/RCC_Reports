@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
   </head>
 
   <body>
@@ -15,7 +17,7 @@
   <div class = "row head1">
     <div class="col-lg-12">
      <div class="col-lg-4">
-  <%= image_tag("https://c2.staticflickr.com/4/3847/32895283364_180dc048d6_o.png")%>
+  <%= link_to image_tag("https://c2.staticflickr.com/4/3847/32895283364_180dc048d6_o.png"), root_path%>
      </div>
   	<div class="col-lg-8">
 
