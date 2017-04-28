@@ -32,7 +32,9 @@ gem 'annotate'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'will_paginate'
 gem 'whenever', :require => false
+gem 'wicked_pdf'
 
+gem 'wkhtmltopdf-binary'
 gem 'fog', '~> 1.38'
 gem 'figaro'
 # Use Redis adapter to run Action Cable in production

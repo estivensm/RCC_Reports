@@ -303,7 +303,7 @@
          </div>
         <div class="col-lg-10">
           
-        <%= f.select :segment, options_for_select(["Activewear", "Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]), {}, {:multiple => true, :class => "chzn-select form-control example-getting-started", :style => "width:450px;",:id =>""} %>
+        <%= f.select :segment, options_for_select(["Core Spinnig", "Weaving", "Swimwear", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]), {}, {:multiple => true, :class => "chzn-select form-control example-getting-started", :style => "width:450px;",:id =>""} %>
         </div>
         <%=f.error_span(:segment) %>
       </div>
@@ -313,7 +313,7 @@
          </div>
         <div class="col-lg-10">
         
-        <%= f.select :customer_end_use, options_for_select(["Core Spinnig", "Weaving", "Swimwear", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]), {}, {:multiple => true, :class => "chzn-select form-control example-getting-started", :style => "width:450px;",:id =>""} %>
+        <%= f.select :customer_end_use, options_for_select(["Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]), {}, {:multiple => true, :class => "chzn-select form-control example-getting-started", :style => "width:450px;",:id =>""} %>
         </div>
         <%=f.error_span(:customer_end_use) %>
       </div>
@@ -838,6 +838,12 @@ function myFunction_problem() {
      }
  });  
    }
+
+
+
+
+
+
 
 </script>
 

@@ -53,9 +53,12 @@
          <td><%= report.reporter %></td>
          <td><%=link_to "Tracings",
             seguimientos_all_path(report.id), :class => 'btn btn-primary btn-xs' %></td>
-         <td>
+         <td><%= link_to report_path(report, :format => "pdf"), target: '_blank',  :rel => "tooltip", :title => "Pdf", :class => 'opciones2' do %>
+         <i class="fa fa-file-pdf-o" aria-hidden="true"></i><%end%>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                edit_report_path(report), :class => 'btn btn-default btn-xs' %>
+               <%= link_to 'show',
+               report_path(report), :class => 'btn btn-default btn-xs' %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                report_path(report),
                :method => :delete,

@@ -1,0 +1,46 @@
+ <!--
+      <tr>
+  <th colspan = "5" style = "text-align:left!important;padding:20px!important"><%=RCC.Description1%></td>
+   </tr><%if (RCC.Plant_report)
+    {%>        <tr>
+  <th  colspan = "5" style = "text-align:left">
+  <span style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Plant report</span></td>
+    </tr> 
+      <tr>
+  <th colspan = "5" style = "font-weight:bold;margin-right:5px;text-align:left!important;font-size:14px;">Research Results</td>
+   </tr>
+    <tr>
+  <th colspan = "5" style = "text-align:left!important;padding:20px!important"><%=RCC.Research_Results%></td>
+   </tr>
+    <tr>
+  <th  colspan = "5" style = "font-weight:bold;margin-right:5px;text-align:left!important;font-size:14px;">Conclusions plant</td>
+   </tr>
+      <tr>
+  <th colspan = "5"  style = "text-align:left!important;padding:20px!important"><%=RCC.Conclusions_plant%></td>
+   </tr>    <%}
+    if (RCC.Action_Plan)
+    {%>        <tr>
+ <th colspan = "5" style = "text-align:left">
+  <span style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Action Plan</span></td>
+  </tr> 
+  <tr>
+  <th colspan = "5"  style = "font-weight:bold;margin-right:5px;text-align:left!important;font-size:16px;">Corrective action plan</td>
+   </tr>
+      <tr>
+  <th  colspan = "5" style = "text-align:left!important;padding:20px!important"><%=RCC.Corrective_action_plan%></td>
+   </tr>    <%}
+    if (RCC.Closing_the_Claim)
+    {%>        <tr>
+  <th  colspan = "5" style = "text-align:left">
+  <span style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Closing the claim</span></td>
+  </tr> 
+  <tr>
+  <th colspan = "5" style = "font-weight:bold;margin-right:5px;text-align:left!important;font-size:14px;">Date: <%=RCC.Date_field%></td>
+   </tr>
+   <tr>
+  <th colspan = "5" style = "font-weight:bold;margin-right:5px;text-align:left!important;font-size:14px;">Validation of claim</td>
+   </tr>
+      <tr>
+  <th colspan = "5"  style = "text-align:left!important;padding:20px!important"><%=RCC.Validation_of_claim%></td>
+   </tr>
+  </table>    <%}%> -->

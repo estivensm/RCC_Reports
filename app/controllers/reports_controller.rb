@@ -31,6 +31,37 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
   # GET /reports/1
   # GET /reports/1.json
   def show
+
+    
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render :pdf => 'file_name',
+          :template => 'reports/pdfs/report.pdf.erb',
+          :layout => 'pdf.html.erb',
+          margin: {
+                      top: 30
+                      },
+          :header => {
+                    :spacing => 5,
+                    :html => {
+                      :template => 'layouts/pdf_header.html'
+                    },
+
+                    },
+                    :footer => {
+                      :spacing => 5,
+                    :html => {
+                      :template => 'layouts/pdf_footer.html.erb'
+                    }
+                },
+          :show_as_html => params[:debug].present?
+        end
+      end
+    
+
+
+
   end
 
   
@@ -60,7 +91,12 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
 
   # GET /reports/1/edit
   def edit
-
+@plants = Plant.all
+   @yarns = YarnType.all
+   @merges = Merge.all
+   @filaments = FilamentCount.all
+   @customers = Customer.all
+   @problems = SpecificProblem.all
   @code = @report.code
   end
 
