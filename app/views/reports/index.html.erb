@@ -49,7 +49,7 @@
          <td><%= report.autor %></td>
          <td><%= report.customer_report_date ? get_date(report.customer_report_date) : report.customer_report_date %></td>
          <td><%= report.customer.name %></td>
-         <td><%= report.plant.name %></td>
+         <td><%= report.plant.name if report.plant %></td>
          <td><%= report.reporter %></td>
          <td><%=link_to "Tracings",
             seguimientos_all_path(report.id), :class => 'btn btn-primary btn-xs' %></td>

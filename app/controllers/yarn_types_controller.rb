@@ -60,7 +60,14 @@ class YarnTypesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+def delete_yarns
+    YarnType.where(:id => params[:yarn_type_ids]).destroy_all
+    respond_to do |format|
+    format.html { redirect_to yarn_types_path }
+    format.json { head :no_content }
+  end
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_yarn_type

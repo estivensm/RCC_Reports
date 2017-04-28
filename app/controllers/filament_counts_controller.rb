@@ -60,7 +60,13 @@ class FilamentCountsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+def delete_filament_counts
+    FilamentCount.where(:id => params[:filament_count_ids]).destroy_all
+    respond_to do |format|
+    format.html { redirect_to filament_counts_path }
+    format.json { head :no_content }
+  end
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_filament_count

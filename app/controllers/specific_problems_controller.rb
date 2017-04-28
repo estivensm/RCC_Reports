@@ -61,6 +61,14 @@ class SpecificProblemsController < ApplicationController
     end
   end
 
+def delete_specific_problems
+    SpecificProblem.where(:id => params[:specific_problem_ids]).destroy_all
+    respond_to do |format|
+    format.html { redirect_to specific_problems_path }
+    format.json { head :no_content }
+  end
+end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_specific_problem

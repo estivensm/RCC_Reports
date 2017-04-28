@@ -60,7 +60,13 @@ class CustomersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+def delete_customers
+    Customer.where(:id => params[:customer_ids]).destroy_all
+    respond_to do |format|
+    format.html { redirect_to customers_path }
+    format.json { head :no_content }
+  end
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer

@@ -26,5 +26,12 @@ Rails.application.routes.draw do
   post "create_customer", to: "reports#create_customer" , as: "create_customer"
   post "create_problem", to: "reports#create_problem" , as: "create_problem"
 
+   delete "delete_yarns", to: "yarn_types#delete_yarns", as: "delete_yarns"
+   delete "delete_specific_problems", to: "specific_problems#delete_specific_problems", as: "delete_specific_problems"
+   delete "delete_plants", to: "plants#delete_plants", as: "delete_plants"
+   delete "delete_merges", to: "merges#delete_merges", as: "delete_merges"
+   delete "delete_filament_counts", to: "filament_counts#delete_filament_counts", as: "delete_filament_counts"
+   delete "delete_customers", to: "customers#delete_customers", as: "delete_customers"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
