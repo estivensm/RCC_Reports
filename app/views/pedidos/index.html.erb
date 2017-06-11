@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pedidos</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+    <th></th>
+      <th>Cliente</th>
+      <th>Product</th>
+      <th>Cantidad</th>
+      <th>Fecha entrega</th>
+      <th>Contador entrega</th>
+      <th>Fecha ingreso inv</th>
+      <th>Fecha pedido</th>
+      <th>Fecha entrega real</th>
+      <th>Estado entrega</th>
+      <th>Estado</th>
+      <th>Contador entrega</th>
+     
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pedidos.each do |pedido| %>
+      <tr>
+      <td> <div class="dropdown sort">
+  <a id="dLabel" href ="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fa fa-sort-desc" aria-hidden="true"></i>
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+  <li><%= link_to 'Show', pedido %></li>
+     <li><%= link_to 'Edit', edit_pedido_path(pedido) %></li>
+     <li> <%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+</div></td>
+        <td><%= pedido.customer.name %></td>
+        <td><%= pedido.product.nombre %></td>
+        <td><%= pedido.cantidad %></td>
+        <td style = "background:<%= estado_contador(pedido.contador_entrega)%>;color:white"><%= get_date(pedido.fecha_entrega) %></td>
+        <td><%= pedido.contador_entrega %> Días</td>
+        <td><%= pedido.fecha_ingreso_inv %></td>
+        <td><%= pedido.fecha_pedido %></td>
+        <td><%= pedido.fecha_entrega_real %></td>
+        <td><%= pedido.estado_entrega %></td>
+        <td><%= pedido.estado %> </td>
+       
+       
+        <td><%= pedido.ano %>-<%= pedido.mes %>-<%= pedido.dia %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pedido', new_pedido_path %>

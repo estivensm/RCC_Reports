@@ -842,7 +842,22 @@ function myFunction_problem() {
 
 
 
+$(document).on('turbolinks:load',function() 
 
+{
+        
+ 
+ $a = <%=@report.plant_id%>;
+                $.get("/get_country/" + $a , function(data) 
+                {
+
+                console.log(data.name);
+                console.log($a);
+                $(".plant1 span").val(data.name)
+                $(".country").val(data.country)
+
+
+                });         });
 
 
 </script>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pedido.user_id %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @pedido.product_id %>
+</p>
+
+<p>
+  <strong>Fecha entrega:</strong>
+  <%= @pedido.fecha_entrega %>
+</p>
+
+<p>
+  <strong>Fecha ingreso inv:</strong>
+  <%= @pedido.fecha_ingreso_inv %>
+</p>
+
+<p>
+  <strong>Fecha pedido:</strong>
+  <%= @pedido.fecha_pedido %>
+</p>
+
+<p>
+  <strong>Fecha entrega real:</strong>
+  <%= @pedido.fecha_entrega_real %>
+</p>
+
+<p>
+  <strong>Estado entrega:</strong>
+  <%= @pedido.estado_entrega %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @pedido.estado %>
+</p>
+
+<p>
+  <strong>Contador:</strong>
+  <%= @pedido.contador %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @pedido.codigo %>
+</p>
+
+<p>
+  <strong>Contador entrega:</strong>
+  <%= @pedido.contador_entrega %>
+</p>
+
+<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+<%= link_to 'Back', pedidos_path %>

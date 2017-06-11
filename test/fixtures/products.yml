@@ -1,0 +1,36 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id         :integer          not null, primary key
+#  nombre     :string
+#  titulo     :string
+#  tipo       :string
+#  merge      :string
+#  medida     :string
+#  hilos      :string
+#  carretes   :string
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  titulo: MyString
+  tipo: MyString
+  merge: MyString
+  medida: MyString
+  hilos: MyString
+  carretes: MyString
+
+two:
+  nombre: MyString
+  titulo: MyString
+  tipo: MyString
+  merge: MyString
+  medida: MyString
+  hilos: MyString
+  carretes: MyString

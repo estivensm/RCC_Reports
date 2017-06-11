@@ -9,11 +9,11 @@ class ReportsController < ApplicationController
   def index
 if params[:search] || params[:search1] || params[:search2] || params[:search3]
 
-    @reports1 = Report.search(params[:search],params[:search1],params[:search2],params[:search3])
+    @reports1 = Report.search(params[:search],params[:search1],params[:search2],params[:search3]).order(created_at: :desc)
 
   else 
       
-       @reports1 = Report.all
+       @reports1 = Report.all.order(created_at: :desc)
 
   end
 

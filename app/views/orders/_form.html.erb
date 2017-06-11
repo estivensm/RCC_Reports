@@ -1,0 +1,146 @@
+
+<br>
+<%= nested_form_for(order) do |f| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+
+  
+
+
+  <div class="form-group col-md-2">
+    <%= f.label :fecha_pedido %>
+    <%= f.date_field :fecha_pedido, class: "form-control" %>
+  </div>
+
+  <div class="form-group col-md-3">
+    <%= f.label "Cliente" %>
+   <%= f.select :customer_id,
+                 Customer.all.map { |u| [u.name, u.id] },
+                             { include_blank: true },
+                             { class: 'chosen-select1 form-control ch  customp'  }
+                  %>
+  </div>
+
+ 
+
+
+
+  <div class="form-group col-md-3">
+    <%= f.label :comentarios %>
+    <%= f.text_area :comentarios, class: "form-control" %>
+  </div>
+
+
+
+</div>
+
+ <hr>
+<div class="row">
+  
+
+<div class="col-lg-12">
+        <div class="col-lg-10">
+          <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Pedidos</h3>
+          </div>
+          <%= f.fields_for :pedidos do |attachment_form|  %>
+        <div class="clearfix">
+      <div class="col-md-12" >
+        <div class="col-md-1 text-right" style = "margin-top:25px" >
+        <%= attachment_form.link_to_remove do %>
+      <i style = "color:#e74b09;font-size: 20px" class="fa fa-trash" aria-hidden="true"></i>
+        <% end %>
+          </div>
+        
+          <div class="col-md-4" >
+          <%= attachment_form.label "Producto" %>
+          <%= attachment_form.select :product_id,
+                 Product.all.map { |u| ["#{u.nombre} - #{u.titulo} - #{u.tipo} - #{u.merge} - #{u.medida} - #{u.hilos} - #{u.carretes}"  , u.id] },
+                             { include_blank: true },
+                             { class: 'chosen-select2 form-control ch source'  }
+                  %>
+
+          <script> $('.chosen-select2').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '350px',
+            placeholder_text_single: "Cliente",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+ $('.source').change(function(){
+$('.customh').val($('.customp').val())
+
+ });
+          </script>
+          </div>
+
+           <div class="col-md-2" >
+          <%= attachment_form.label "Cantidad" %>
+         <%= attachment_form.text_field :cantidad, :class => 'form-control' %>
+          </div>
+          <div class="col-md-2 " >
+          <%= attachment_form.label "Fecha de Entrega" %>
+          <%= attachment_form.date_field :fecha_entrega, :class => 'form-control' %>
+          </div>
+          <div class="col-md-2 " >
+          <%= attachment_form.label "Fecha de Pedido" %>
+          <%= attachment_form.date_field :fecha_pedido, :class => 'form-control' %>
+
+        
+        </div>
+        <%= attachment_form.hidden_field :user_id ,:value =>  current_user.id %>
+        <%= attachment_form.hidden_field :customer_id , class: "customh" %>
+
+          </div>
+          </div>
+
+
+      <%end%>
+       <br>
+        </div>
+       <%= f.link_to_add "Add Pedido", :pedidos, :class => 'btn btn-primary top10'  %>
+
+     
+</div>
+<br>
+<br>
+ <%= f.hidden_field :user_id ,:value =>  current_user.id %>
+
+   <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script>
+
+$(document).on('turbolinks:load',function() 
+
+{
+
+  $('.chosen-select1').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '220px',
+            placeholder_text_single: "Cliente",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+
+
+
+ });
+</script>
+

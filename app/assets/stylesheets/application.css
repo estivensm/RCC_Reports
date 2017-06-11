@@ -17,7 +17,7 @@
  */
 body
 {
-	margin:0px;
+	margin:0px !important;
 }
 .head1
 {
@@ -29,8 +29,9 @@ body
 	       background: rgb(255, 255, 255);
     border-radius: 10px;
     border: 2px solid #ffffff;
-    padding: 56px;
+    padding: 56px !important;
     color: #ed7741;
+
 }
 .loginsubmit
 {

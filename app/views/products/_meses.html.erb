@@ -1,0 +1,70 @@
+<div class = "container">
+<%= form_tag products_path, method: :get  do %>
+
+  
+    <label>Enero
+    
+    
+<%= check_box_tag "param[]", 1 , @param.index("1")  ,class:"ck"%></label>
+  
+  
+    <label>Febrero
+<%= check_box_tag "param[]", 2 , @param.index("2")   ,class:"ck"%></label>
+
+  
+    <label>Marzo
+<%= check_box_tag "param[]", 3 ,@param.index("3")  ,class:"ck"%></label>
+
+   
+    <label>Abril
+<%= check_box_tag "param[]", 4 ,@param.index("4") ,class:"ck"%></label>
+
+   
+    <label>Mayo
+<%= check_box_tag "param[]", 5 ,@param.index("5")  ,class:"ck"%></label>
+
+  
+    <label>Junio
+<%= check_box_tag "param[]", 6 ,@param.index("6") ,class:"ck"%></label>
+ 
+ 
+    <label>Julio
+<%= check_box_tag "param[]", 7 ,@param.index("7")  ,class:"ck"%></label>
+
+  
+    <label>Agosto
+<%= check_box_tag "param[]", 8 ,@param.index("8")  ,class:"ck"%></label>
+
+
+ 
+    <label>Septiembre
+<%= check_box_tag "param[]", 9 ,@param.index("9")  ,class:"ck"%></label>
+
+
+    <label>Octubre
+<%= check_box_tag "param[]", 10 ,@param.index("10")  ,class:"ck"%></label>
+
+
+    <label>Noviembre
+<%= check_box_tag "param[]", 11 ,@param.index("11")  ,class:"ck"%></label>
+  
+
+    <label>Diciembre
+<%= check_box_tag "param[]", 12 ,@param.index("12")  ,class:"ck"%></label>
+
+
+
+
+<%= submit_tag "buscar", class: "btn btn-danger" %>
+ 
+<%end%>
+
+  </div>
+<hr>
+ <style>
+   .container label
+   {
+    display: inline-block;
+    margin-right: 15px;
+   }
+ </style>

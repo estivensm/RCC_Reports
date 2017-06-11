@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  resources :orders
+  resources :pedidos
+  resources :products do 
+      collection { post :import }
+  end
   get 'pages/home'
 
   devise_for :users

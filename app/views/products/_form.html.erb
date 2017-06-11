@@ -1,0 +1,59 @@
+<div class="row">
+  
+
+<div class="col-md-6">
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+<%val1 = "" 
+ action_name == "edit" ? val1 = @product.nombre : val1 = "" %>
+    <%= f.label "Product" %>
+     <%= f.select 'nombre', options_for_select(["LYCRA®", "Elaspan"], val1), {},{:class => 'form-control'}%>
+  </div>
+
+  <div class="field">
+    <%= f.label :titulo %>
+    <%= f.text_field :titulo  , class:"form-control"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo %>
+    <%= f.text_field :tipo , class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :merge %>
+    <%= f.text_field :merge , class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :medida %>
+    <%= f.text_field :medida , class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hilos %>
+    <%= f.text_field :hilos , class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :carretes %>
+    <%= f.text_field :carretes , class:"form-control" %>
+  </div>
+ <%= f.hidden_field :user_id ,:value =>  current_user.id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+  </div>  </div>

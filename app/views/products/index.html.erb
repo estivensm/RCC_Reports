@@ -1,0 +1,108 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Productos <%  @param.each do  |p| %>
+<span style="color:gray;font-size: 20px;margin-left: 10px;"><%=get_mes(p)%></span>
+  <%end%>
+</h1>
+
+
+<br>
+<%=render "meses", param: @param %>
+<div class="descnum3">
+<table class="table table-striped">
+  <thead>
+    <tr>
+     <th></th>
+      <th style = "width: 150px">Producto</th>
+      <th style = "width: 80px">Titulo</th>
+      <th style = "width: 80px">Tipo</th>
+      <th style = "width: 80px">Merge</th>
+      <th style = "width: 80px">Medida</th>
+      <th style = "width: 80px">Hilos</th>
+      <th style = "width: 80px">Carretes</th>
+      <% Customer.all.each do |customer|%>
+      <th class = "rotate" style = "width: 80px"><p><%=customer.name%></p></th>
+      <%end%>
+     
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+       <td>
+         <div class="dropdown sort">
+  <a id="dLabel" href ="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fa fa-sort-desc" aria-hidden="true"></i>
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+     <li><%= link_to 'Edit', edit_product_path(product) %></li>
+     <li> <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+</div>
+       </td>
+        <td><%= product.nombre %></td>
+        <td><%= product.titulo %></td>
+        <td><%= product.tipo %></td>
+        <td><%= product.merge %></td>
+        <td><%= product.medida %></td>
+        <td><%= product.hilos %></td>
+        <td><%= product.carretes %></td>
+        <% Customer.all.each do |customer|%>
+
+      <td class="values" style = "width: 80px"><%=customer.pedidos.where(product_id: product.id).where(:mes => @param).sum(:cantidad) if customer.pedidos.where(product_id: product.id).sum(:cantidad) != 0 %></td>
+      <%end%>
+       <!-- <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Product', new_product_path %>
+  <%= form_tag import_products_path, multipart: true do %>
+  
+  <%= file_field_tag :file , class: 'inputfile', id: 'file', style: "display:inline-block" %>
+  
+  <%= submit_tag "Importar", :class => "btn btn-primary", style: "" %>
+
+
+<% end %>
+
+<style>
+
+  .rotate p
+  {
+    margin: 0px;
+    margin-bottom: 32px;
+    
+ 
+    /* Rotate div */
+    -ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    transform: rotate(270deg);
+
+  }
+  .values
+  {
+        border-left: 1px solid gray;
+    border-right: 1px solid gray;
+  }
+
+  @media (max-width: 1500px) {
+    .table-hidden
+{
+  width:1500px !important;
+}
+.descnum3
+{
+    max-width: 100%;
+    overflow: scroll;
+   
+}
+
+</style>

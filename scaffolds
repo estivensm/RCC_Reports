@@ -1,0 +1,10 @@
+
+// scaffold productos 
+rails g scaffold Product nombre titulo tipo merge medida hilos carretes user_id:integer
+
+//scaffold pedido
+
+rails g scaffold Pedido user_id:integer product_id:integer fecha_entrega:date fecha_ingreso_inv:date fecha_pedido:date fecha_entrega_real:date estado_entrega estado:boolean contador:integer codigo:string contador_entrega:integer cantidad:integer
+
+//scaffold order 
+rails g scaffold Order fecha_pedido:date customer_id:integer user_id:integer comentarios:text

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330124109) do
+ActiveRecord::Schema.define(version: 20170501222755) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name"
@@ -44,6 +44,37 @@ ActiveRecord::Schema.define(version: 20170330124109) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.date     "fecha_pedido"
+    t.integer  "customer_id"
+    t.integer  "user_id"
+    t.text     "comentarios"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "pedidos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.date     "fecha_entrega"
+    t.date     "fecha_ingreso_inv"
+    t.date     "fecha_pedido"
+    t.date     "fecha_entrega_real"
+    t.string   "estado_entrega"
+    t.boolean  "estado"
+    t.integer  "contador"
+    t.string   "codigo"
+    t.integer  "contador_entrega"
+    t.integer  "cantidad"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "customer_id"
+    t.integer  "order_id"
+    t.integer  "ano"
+    t.integer  "mes"
+    t.integer  "dia"
+  end
+
   create_table "plants", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
@@ -68,6 +99,19 @@ ActiveRecord::Schema.define(version: 20170330124109) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["report_id"], name: "index_product_images_on_report_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "titulo"
+    t.string   "tipo"
+    t.string   "merge"
+    t.string   "medida"
+    t.string   "hilos"
+    t.string   "carretes"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reports", force: :cascade do |t|

@@ -15,4 +15,38 @@ module ApplicationHelper
 end
 #dias[ds] + ", " + 
 end
+
+
+def get_mes(fecha)
+   
+   if fecha != nil
+
+    
+    meses = {"1" => "Enero", "2" => "Febrero","3"=>"Marzo","4" => "Abril", "5" => "Mayo","6"=> "Junio" ,"7"=> "Julio", "8" => "Agosto", "9"=> "Septiembre" ,"10"=> "Octubre","11" => "Noviembre" ,"12" => "Diciembre" }
+    return   meses[fecha] 
+end
+#dias[ds] + ", " + 
+end
+
+
+def estado_contador(cont)
+
+    if cont >5 
+
+      "#0db497 !important"
+    elsif cont <=5 && cont >= 0
+
+      if action_name != "cerrados"
+
+      "orange !important"
+      else
+"#0db497 !important"
+      end
+      else
+
+        "#e23434 !important"
+
+    end
+      
+end
 end

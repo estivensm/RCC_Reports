@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#Product.create(nombre: 'Fibra LYCRA', titulo: "", tipo: "162B", merge: "1F209", medida: "", hilos: 81831000, carretes: 81831000 , user_id:)
+
+
