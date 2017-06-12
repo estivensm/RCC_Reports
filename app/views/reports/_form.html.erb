@@ -885,13 +885,19 @@ $(document).on('turbolinks:load',function()
 
     $(".plant1").change(function()
           {
-               console.log("hola");
+                $a = $(".plant1").val();
+                $.get("/get_country/" + $a , function(data) 
+                {
+
+                console.log(data.name);
+                console.log($a);
+                $(".country").val(data.country)
+
+
+                });
+
           });
 
-    $(".mg1").change(function()
-          {
-               console.log("hola");
-          });
 
 </script>
 
