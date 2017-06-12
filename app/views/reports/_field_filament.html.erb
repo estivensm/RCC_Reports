@@ -1,6 +1,14 @@
 <select class="form-control sel pri chosen-select" name="report[filament_count_id]" id="filament_count_id">
 <% @filaments.each do  |filament|%>
+ <%if action_name == "edit"%>
+<%if filament.id == @report.filament_count_id%>
+<option selected="selected" value="<%=filament.id%>"><%=filament.name%></option>
+<%else%>
 <option value="<%=filament.id%>"><%=filament.name%></option>
+<%end%>
+<%else%>
+<option value="<%=filament.id%>"><%=filament.name%></option>
+<%end%>
 <%end%>
 </select>
 

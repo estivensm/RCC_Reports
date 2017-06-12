@@ -704,7 +704,16 @@ function myFunction_plant() {
         "country": c,
            },
      success: function(response){
-      
+       $a = $(".plant1").val();
+                $.get("/get_country/" + $a , function(data) 
+                {
+
+                console.log(data.name);
+                console.log($a);
+                $(".country").val(data.country)
+
+
+                });
 
      },
      error:function(response){
@@ -847,18 +856,42 @@ $(document).on('turbolinks:load',function()
 {
         
  
- $a = <%=@report.plant_id%>;
+ if (<%= action_name == "edit"%>)
+{
+ $a = <%= action_name == "edit" ? @report.plant_id : 0 %>  ;
+ }
+  else
+  {
+  $a =   $(".plant1").val();
+  }
+
+
                 $.get("/get_country/" + $a , function(data) 
                 {
 
                 console.log(data.name);
                 console.log($a);
-                $(".plant1 span").val(data.name)
+                $(".plant1").val(3)
                 $(".country").val(data.country)
 
 
-                });         });
+                });      
 
+
+
+
+                   });
+
+
+    $(".plant1").change(function()
+          {
+               console.log("hola");
+          });
+
+    $(".mg1").change(function()
+          {
+               console.log("hola");
+          });
 
 </script>
 

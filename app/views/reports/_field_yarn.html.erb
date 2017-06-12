@@ -1,6 +1,14 @@
 <select class="form-control sel pri chosen-select" name="report[yarn_type_id]" id="yarn_type_id">
 <% @yarns.each do  |yarn|%>
+<%if action_name == "edit"%>
+<%if yarn.id == @report.yarn_type_id%>
+<option selected="selected" value="<%=yarn.id%>"><%=yarn.name%></option>
+<%else%>
 <option value="<%=yarn.id%>"><%=yarn.name%></option>
+<%end%>
+<%else%>
+<option value="<%=yarn.id%>"><%=yarn.name%></option>
+<%end%>
 <%end%>
 </select>
 

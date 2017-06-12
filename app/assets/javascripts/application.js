@@ -194,21 +194,7 @@ $(document).on('turbolinks:load',function()
           $('.country').attr("disabled", true);
 
 
-          $(".plant1").change(function()
-          {
-                $a = $(".plant1").val();
-                $.get("/get_country/" + $a , function(data) 
-                {
-
-                console.log(data.name);
-                console.log($a);
-                $(".country").val(data.country)
-
-
-                });
-
-          });
-
+        
 
           $(".borrar").click(function()
             {

@@ -1,6 +1,14 @@
 <select class="form-control sel pri chosen-select" name="report[customer_id]" id="customer_id">
 <% @customers.each do  |customer|%>
+ <%if action_name == "edit"%>
+<%if customer.id == @report.customer_id%>
+<option selected="selected" value="<%=customer.id%>"><%=customer.name%></option>
+<%else%>
 <option value="<%=customer.id%>"><%=customer.name%></option>
+<%end%>
+<%else%>
+<option value="<%=customer.id%>"><%=customer.name%></option>
+<%end%>
 <%end%>
 </select>
 
