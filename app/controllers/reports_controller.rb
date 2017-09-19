@@ -40,7 +40,7 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
        end
     end
     @array_segment = ""
-    b = ["Core Spinnig", "Weaving", "Swimwear", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]
+    b = ["Core Spinnig", "Weaving", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]
     b.each do |use|
       if @report.segment[use]
           @array_segment = @array_segment + use + ","
@@ -119,7 +119,7 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
        end
     end
     @array_segment = Array.new
-    b = ["Core Spinnig", "Weaving", "Swimwear", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]
+    b = ["Core Spinnig", "Weaving", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]
     b.each do |use|
       if @report.segment[use]
           @array_segment.push(use)
