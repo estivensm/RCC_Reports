@@ -32,7 +32,20 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
   # GET /reports/1.json
   def show
 
-    
+    @array_use = ""
+    a = ["Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]
+    a.each do |use|
+      if @report.customer_end_use[use]
+          @array_use = @array_use + use + ","
+       end
+    end
+    @array_segment = ""
+    b = ["Core Spinnig", "Weaving", "Swimwear", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]
+    b.each do |use|
+      if @report.segment[use]
+          @array_segment = @array_segment + use + ","
+      end
+    end  
       respond_to do |format|
         format.html
         format.pdf do
@@ -91,22 +104,39 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
 
   # GET /reports/1/edit
   def edit
-@plants = Plant.all
-   @yarns = YarnType.all
-   @merges = Merge.all
-   @filaments = FilamentCount.all
-   @customers = Customer.all
-   @problems = SpecificProblem.all
-  @code = @report.code
-  end
+    @plants = Plant.all
+    @yarns = YarnType.all
+    @merges = Merge.all
+    @filaments = FilamentCount.all
+    @customers = Customer.all
+    @problems = SpecificProblem.all
+    @code = @report.code
+    @array_use = Array.new
+    a = ["Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]
+    a.each do |use|
+      if @report.customer_end_use[use]
+          @array_use.push(use)
+       end
+    end
+    @array_segment = Array.new
+    b = ["Core Spinnig", "Weaving", "Swimwear", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]
+    b.each do |use|
+      if @report.segment[use]
+          @array_segment.push(use)
+      end
+    end  
+end
+
+
 
   # POST /reports
   # POST /reports.json
   def create
     @report = Report.new(report_params)
-    
+
     respond_to do |format|
       if @report.save
+
         format.html { redirect_to @report, notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
       else
@@ -234,6 +264,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:count, :code, :autor, :product_name, :customer_report_date, :report_start_date, :plant_id, :title, :value, :decitex, :denier, :yarn_type_id, :merge_id, :filament_count_id, :segment, :customer_end_use, :invoice_invista, :invoice_mag, :quantity_shipped, :quantity_affected, :return_potential, :return_value, :claim_potential, :claim_value, :customer_id, :reporter, :phone, :email, :source, :specific_problem_id, :description_problem, :preliminary_investigation, :preliminary_conclusions, :research_results, :conclusions_plant, :action_plan, :close_claim, :date_close, :validation_claim ,product_images_attributes: [:id, :number, :description, :image, :_destroy],product_dates_attributes: [:id, :number, :date, :_destroy] )
+      params.require(:report).permit(:count, :code, :autor, :product_name, :customer_report_date, :report_start_date, :plant_id, :title, :value, :decitex, :denier, :yarn_type_id, :merge_id, :filament_count_id, {:segment => []}, {:customer_end_use => []}, :invoice_invista, :invoice_mag, :quantity_shipped, :quantity_affected, :return_potential, :return_value, :claim_potential, :claim_value, :customer_id, :reporter, :phone, :email, :source, :specific_problem_id, :description_problem, :preliminary_investigation, :preliminary_conclusions, :research_results, :conclusions_plant, :action_plan, :close_claim, :date_close, :validation_claim ,product_images_attributes: [:id, :number, :description, :image, :_destroy],product_dates_attributes: [:id, :number, :date, :_destroy] )
     end
 end
