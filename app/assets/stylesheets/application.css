@@ -24,18 +24,50 @@ body
 	margin:10px;
 }
 
-.login
-{
-	       background: rgb(255, 255, 255);
-    border-radius: 10px;
-    border: 2px solid #ffffff;
-    padding: 56px !important;
-    color: #ed7741;
 
+.login
+    {
+    margin-top:40px;    
+    padding-top: 50px;
+    padding-bottom: 40px;
+    padding-left: 50px !important;
+    padding-right: 50px  !important;
+       background: white;
+
+    background-color: #fff;
+  
+      p
+      {
+        padding:10px;
+      }
+      label
+      {
+      
+      }
+    }
+
+
+
+
+.sign_form
+{
+  margin-top:30px;
+}
+
+.titulo-form
+{
+   font-family: 'Days One', sans-serif;
+    text-align:center;
+    font-size: 2em;
+    margin: 0px;
+       
+    color: #b9b9b9;
 }
 .loginsubmit
 {
     width: 100%;
+      background-color: #e75b1e !important;
+    border-color: #e75b1e !important;
 }
 
 .volver
@@ -49,6 +81,17 @@ body
 .btn-primary
 {
 	color:white !important;
+  
+}
+.btn-primary:hover
+{
+  color:white !important;
+
+}
+.btn-primary:focus
+{
+  color:white !important;
+
 }
 .btn-danger:visited
 {
@@ -80,3 +123,4 @@ h1
       color:#e74b09 !important;
   margin: 0px !important;
     }
+
