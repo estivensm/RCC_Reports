@@ -19,6 +19,9 @@
 #  updated_at         :datetime         not null
 #  customer_id        :string
 #  order_id           :integer
+#  ano                :integer
+#  mes                :integer
+#  dia                :integer
 #
 
 class Pedido < ApplicationRecord

@@ -1,0 +1,97 @@
+<div class="row">
+  
+
+<%= form_for(agenda) do |f| %>
+  <% if agenda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(agenda.errors.count, "error") %> prohibited this agenda from being saved:</h2>
+
+      <ul>
+      <% agenda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="col-md-4">
+    <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre, class: "form form-control" %>
+  </div>
+</div>
+<div class="col-md-4">
+  <div class="field">
+    <%= f.label :empresa %>
+    <%= f.text_field :empresa, class: "form form-control"  %>
+  </div>
+
+</div>
+
+<div class="col-md-4">
+<div class="field">
+    <%= f.label :cargo %>
+    <%= f.text_field :cargo , class: "form form-control" %>
+  </div>
+
+</div>
+
+<div class="col-md-4">
+  <div class="field">
+    <%= f.label :telefono %>
+    <%= f.text_field :telefono , class: "form form-control" %>
+  </div>
+
+
+</div>
+
+
+<div class="col-md-4">
+
+
+  <div class="field">
+    <%= f.label :celular %>
+    <%= f.text_field :celular, class: "form form-control"  %>
+  </div>
+
+
+</div>
+
+  
+<div class="col-md-4">
+
+
+  
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email , class: "form form-control" %>
+  </div>
+
+</div>
+
+
+  
+<div class="col-md-4">
+
+
+  <div class="field">
+    <%= f.label :direccion_empresa %>
+    <%= f.text_field :direccion_empresa, class: "form form-control"  %>
+  </div>
+</div>
+
+<div class="col-md-12">
+
+
+  <div class="field">
+ <div class="actions">
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+</div>
+
+ 
+<% end %>
+</div>
+
