@@ -239,7 +239,7 @@ $(document).on('turbolinks:load',function()
             placeholder_text_multiple: "Seleccione una varias opciones"
       
           });
-$('.sh2').chosen(
+      $('.sh2').chosen(
           {
       
             allow_single_deselect: true,
@@ -249,6 +249,53 @@ $('.sh2').chosen(
             placeholder_text_multiple: "Seleccione una varias opciones"
       
           });
+
+        $('.sh4').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Merge",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+
+              $('.sh5').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Yarn",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+
+        $('.sh6').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Plant",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+
+                $('.sh7').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Filament",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+
+
+       
 
 });
 

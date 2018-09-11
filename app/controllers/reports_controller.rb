@@ -7,9 +7,15 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-if params[:search] || params[:search1] || params[:search2] || params[:search3]
+     @plants = Plant.all
+     @yarns = YarnType.all
+    @merges = Merge.all
+    @filaments = FilamentCount.all
+    @customers = Customer.all
+    @problems = SpecificProblem.all
+  if params[:search] || params[:search1] || params[:search2] || params[:search3]|| params[:search4] || params[:search5] || params[:search6]
 
-    @reports1 = Report.search(params[:search],params[:search1],params[:search2],params[:search3]).order(created_at: :desc)
+    @reports1 = Report.search(params[:search],params[:search1],params[:search2],params[:search3],params[:search4],params[:search5],params[:search6]).order(created_at: :desc)
 
   else 
       
@@ -22,6 +28,7 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
   end
   
   def seguimientos_all
+
     @report = Report.find(params[:id])
     @seguimientos = @report.seguimientos
     
@@ -31,7 +38,12 @@ if params[:search] || params[:search1] || params[:search2] || params[:search3]
   # GET /reports/1
   # GET /reports/1.json
   def show
-
+     @plants = Plant.all
+     @yarns = YarnType.all
+    @merges = Merge.all
+    @filaments = FilamentCount.all
+    @customers = Customer.all
+    @problems = SpecificProblem.all
     @array_use = ""
     a = ["Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]
     a.each do |use|
@@ -133,7 +145,12 @@ end
   # POST /reports.json
   def create
     @report = Report.new(report_params)
-
+     @plants = Plant.all
+     @yarns = YarnType.all
+    @merges = Merge.all
+    @filaments = FilamentCount.all
+    @customers = Customer.all
+    @problems = SpecificProblem.all
     respond_to do |format|
       if @report.save
 
@@ -149,6 +166,11 @@ end
   # PATCH/PUT /reports/1
   # PATCH/PUT /reports/1.json
   def update
+    @yarns = YarnType.all
+    @merges = Merge.all
+    @filaments = FilamentCount.all
+    @customers = Customer.all
+    @problems = SpecificProblem.all
     respond_to do |format|
       if @report.update(report_params)
         format.html { redirect_to @report, notice: 'Report was successfully updated.' }
