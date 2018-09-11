@@ -59,12 +59,12 @@ class Report < ApplicationRecord
  
   before_create :insertar #inserta el count para generar el codigo
   
-  belongs_to :plant
-  belongs_to :yarn_type
-  belongs_to :merge
-  belongs_to :filament_count
-  belongs_to :customer
-  belongs_to :specific_problem
+  belongs_to :plant, optional: true
+  belongs_to :yarn_type , optional: true
+  belongs_to :merge , optional: true
+  belongs_to :filament_count , optional: true
+  belongs_to :customer , optional: true
+  belongs_to :specific_problem , optional: true
   has_many :product_images , inverse_of: :report, dependent: :destroy
   has_many :product_dates , inverse_of: :report, dependent: :destroy
   has_many :seguimientos , dependent: :destroy
@@ -75,15 +75,18 @@ class Report < ApplicationRecord
     
  
 
-def self.search(search, search1, search2 , search3)
+def self.search(search, search1, search2 , search3, search4, search5, search6)
 
-search != "" ? (scope :product, -> { where(product_name: search) }) : (scope :product, -> { where.not(product_name: nil) })
-search1 != "" ? (scope :customer, -> { where(customer_id: search1) }) : (scope :customer, -> { where.not(customer_id: nil) })
-search2 != "" ? (scope :plant, -> { where(plant_id: search2) }) : (scope :plant, -> { where.not(plant_id: nil) })  
-search3 != "" ? (scope :reporter, -> { where("reporter like '%#{search3.downcase}%' or reporter like '%#{search3.upcase}%'  or reporter like '%#{search3.capitalize}%' ") }) : (scope :reporter, -> { where.not(id: nil) }) 
+  search != "" ? (scope :product, -> { where(product_name: search) }) : (scope :product, -> { where.not(product_name: nil) })
+  search1 != "" ? (scope :customer, -> { where(customer_id: search1) }) : (scope :customer, -> { where.not(customer_id: nil) })
+  search2 != "" ? (scope :plant, -> { where(plant_id: search2) }) : (scope :plant, -> { where.not(plant_id: nil) })  
+  search3 != "" ? (scope :reporter, -> { where("reporter like '%#{search3.downcase}%' or reporter like '%#{search3.upcase}%'  or reporter like '%#{search3.capitalize}%' ") }) : (scope :reporter, -> { where.not(id: nil) }) 
 
-product.customer.plant.reporter
+  search4 != "" ? (scope :merge_scope, -> { where(merge_id: search4) }) : (scope :merge_scope, -> { where.not(merge_id: nil) })
+  search5 != "" ? (scope :yarn_type, -> { where(yarn_type_id: search5) }) : (scope :yarn_type, -> { where.not(yarn_type_id: nil) })
+  search6 != "" ? (scope :filament_count, -> { where(filament_count_id: search6) }) : (scope :filament_count, -> { where.not(filament_count_id: nil) })
 
+  product.customer.plant.reporter.yarn_type.filament_count.merge_scope
 
 end
 
