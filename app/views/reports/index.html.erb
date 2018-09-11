@@ -27,8 +27,6 @@
       <%= select_tag 'search5', options_for_select(YarnType.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh5", include_blank: true }%>
 
       <%=select_tag 'search1', options_for_select(Customer.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh1", include_blank: true }%>
-
-      <%= select_tag 'search2', options_for_select(Plant.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh6", include_blank: true }%>
                   <%= button_tag class: "btn btn-primary sh3" do %>
                <i class="fas fa-search" style=""></i>
             <% end -%>
@@ -38,7 +36,8 @@
       <div class="container" style="padding: 0px; margin: 0px;">
          <div id="demo" class="collapse">
 
-<%= text_field_tag :search3, params[:search3], placeholder: "Reporter", class: "form-control search", style: "margin-top: 10px;" %>
+      <%= select_tag 'search2', options_for_select(Plant.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh6", include_blank: true }%>
+<%= text_field_tag :search3, params[:search3], placeholder: "Reporter", class: "form-control search", style: "margin-top: 10px !important;" %>
 
          </div>
       </div>
@@ -80,17 +79,19 @@
          <td><%= report.reporter  %></td>
          <td  style="width: 1px; padding: 0px; padding-top: 10px; padding-left: 18px;"><%=link_to "Tracings",seguimientos_all_path(report.id), :class => 'btn btn-primary btn-xs' %></td>
          <td>
+            <%= link_to image_tag("https://www.codot.gov/business/civilrights/ada/assets/adobe-pdf-icon.png/image_preview"), report_path(report.id , :format => "pdf"), target:"_blank", class: "icon-export"%>
+
             <div class="btn-group" style="float: right;">
                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #EC5C00; border: none;"><i class="fas fa-list"></i>  <i class="fas fa-sort-down" style="font-size: 19px;"></i>
 
                </button>
                     
-            <div class="dropdown-menu dropdown-menu-right" style="font-size: 14px; min-width: 146px;"  >
+            <div class="dropdown-menu dropdown-menu-right" style="font-size: 14px; min-width: 108px;"  >
                <ul style="padding: 0px; margin: 0px !important;">
                   
                   <ol style="padding-left: 10px;">
                      <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_report_path(report), :class => 'btn btn-default btn-xs' %>     
+                        edit_report_path(report), :class => 'btn btn-info btn-xs' %>     
                   </ol>
 
                   <ol>
@@ -98,13 +99,7 @@
                         report_path(report), :class => 'btn btn-default btn-xs' %>
                   </ol>
                          
-                  <ol>
-                     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        report_path(report),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-xs btn-danger' %>           
-               </ol>
+                  
              </ul>
            </div>
          </div>
@@ -181,9 +176,16 @@ color:#e74b09 !important;
    }
 
    .sh3{
-       width: 38px;
+       width: 114px;
        height: 27px;
    }
+
+   .icon-export img{
+      width: 34px !important; 
+      margin-bottom: 10px !important;
+   }
+   
+
 
 
 </style>
