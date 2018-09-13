@@ -54,13 +54,15 @@
          <div class="col-md-2 rtd"> <%=  get_date(seg.created_at)  %></div>
          <div class="col-md-2 rtd"><%= (link_to "Attchment",seg.attachment_url, class:"linka") if seg.attachment_url %></div>
          <div class="col-md-6 rtd"> <%= seg.description %></div>
-          <div class="col-md-2 rtd">
-            <%= link_to  edit_report_seguimiento_path(@report,seg),remote: true, :class => "opciones" do %>
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    <% end %>
-                                    <%= link_to  report_seguimiento_path(@report,seg),  method: :delete, data: { confirm: 'Are you sure?' }, :class => "opciones" do %>
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    <% end %>
+         <div class="col-md-2 rtd">
+            
+         <%= link_to  edit_report_seguimiento_path(@report,seg),remote: true, :class => "opciones" do %>
+            <i class="fas fa-pencil-alt"></i>
+         <% end %>
+
+         <%= link_to  report_seguimiento_path(@report,seg),  method: :delete, data: { confirm: 'Are you sure?' }, :class => "opciones" do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+         <% end %>
 
           </div>
          </div>

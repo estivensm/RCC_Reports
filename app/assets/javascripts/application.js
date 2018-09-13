@@ -277,7 +277,7 @@ $(document).on('turbolinks:load',function()
       
             allow_single_deselect: true,
             no_results_text: 'No hay resultados',
-            width: '200px',
+            width: '163px',
             placeholder_text_single: "Plant",
             placeholder_text_multiple: "Seleccione una varias opciones"
       

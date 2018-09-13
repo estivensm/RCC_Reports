@@ -15,6 +15,8 @@
         </div>
       </div>
   <% end %>
+<hr>
+<br>
 <div class="row">
   <div class="col-md-4" >
     <div class="form-group">
@@ -47,18 +49,18 @@
     <br>
     <div class="col-lg-10">
             <div class="radio-inline">
-              <label style = "font-weight: 100;"><%= f.radio_button(:product_name, "LYCRA®fiber", :required => true)%>LYCRA®fiber</label>
+              <label style = "font-weight: 100; cursor: pointer;"><%= f.radio_button(:product_name, "LYCRA®fiber", :required => true)%>LYCRA®fiber</label>
             </div>
               <div class="radio-inline">
-              <label style = "font-weight: 100;"><%= f.radio_button(:product_name, "Nylon", :required => true)%>Nylon</label>
+              <label style = "font-weight: 100; cursor: pointer;"><%= f.radio_button(:product_name, "Nylon", :required => true)%>Nylon</label>
             </div>
            
             <br>
            <div class="radio-inline">
-              <label style = "font-weight: 100;"><%= f.radio_button(:product_name, "Elaspan ®", :required => true)%>Elaspan ®</label>
+              <label style = "font-weight: 100; cursor: pointer;"><%= f.radio_button(:product_name, "Elaspan ®", :required => true)%>Elaspan ®</label>
             </div>
             <div style = "margin-left: 28px;" class="radio-inline">
-              <label style = "font-weight: 100;"><%= f.radio_button(:product_name, "T400", :required => true)%>T400</label>
+              <label style = "font-weight: 100; cursor: pointer;"><%= f.radio_button(:product_name, "T400", :required => true)%>T400</label>
             </div>
         </div>
         <%=f.error_span(:product_name) %>    
@@ -69,12 +71,12 @@
 
   <div class="col-md-4" style = "border-right: 1px solid gainsboro;border-left: 1px solid gainsboro;"><div class="form-group">
   
-  <div class="col-lg-10">
-    <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Date</h3>
+  <div class="col-lg-10" style="padding-left: 15px;">
+    <h3 class = "titulo" style = "margin :0px 0px 5px 0;" >Date</h3>
     <br>
-    </div>
+  </div>
    <div class="col-lg-10">
-    <%= f.label :customer_report_date %>
+    <%= f.label "Fecha de Prestamo" %>
     </div>
     <div class="col-lg-10">
       <%= f.date_field :customer_report_date, :class => 'form-control' %>
@@ -219,39 +221,7 @@
 <hr>
 <div class="row">
 
-      <div class="col-md-4" style="">
-      <div class="col-lg-10" style="padding: 0px;">
-          <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Product Date</h3>
-          </div>
-      <%= f.fields_for :product_dates do |attachment_form|  %>
-        <div class="clearfix">
-        <div class="col-md-12" >
-      
-      <div class="col-md-1" style = "margin-top:25px" >
-        <%= attachment_form.link_to_remove do %>
-      <i style = "color:#e74b09;font-size: 20px" class="fa fa-trash" aria-hidden="true"></i>
-        <% end %>
-        </div>
-        <div class="col-md-2" >
-          <%= attachment_form.label :number %>
-          <%= attachment_form.text_field :number, :class => 'form-control' %>
-          </div>
-          <div class="col-md-8" >
-          <%= attachment_form.label :date %>
-          <%= attachment_form.date_field :date, :class => 'form-control' %>
-
-        
-          
-          </div>
-        </div>
-      </div>
-      <%end%>
-
-      <%= f.link_to_add "Add Produt Dates", :product_dates, :class => 'btn btn-primary top10' %>
-<br><br><br>
-      </div>
-
-      <div class="col-md-7" style="">
+      <div class="col-md-6" style="">
         <div class="col-lg-10" style="padding: 0px;">
           <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Product Image</h3>
           </div>
@@ -283,7 +253,7 @@
 
 
       <%end%>
-       <%= f.link_to_add "Add Produt Images", :product_images, :class => 'btn btn-primary top10'  %>
+       <%= f.link_to_add "Add Produt Images", :product_images, :class => 'btn btn-primary top10 btn1'  %>
       </div>
      
 </div>
@@ -321,30 +291,14 @@
         </div>
         <%=f.error_span(:customer_end_use) %>
       </div>
-      <div class="form-group">
-      <div class="col-lg-10">
-        <%= f.label :invoice_invista %> 
-         </div>
-        <div class="col-lg-10">
-          <%= f.text_field :invoice_invista, :class => 'form-control' %>
-        </div>
-        <%=f.error_span(:invoice_invista) %>
-      </div>
-      <div class="form-group">
-      <div class="col-lg-10">
-        <%= f.label :invoice_mag %>
-         </div>
-        <div class="col-lg-10">
-          <%= f.text_field :invoice_mag, :class => 'form-control' %>
-        </div>
-        <%=f.error_span(:invoice_mag) %>
-      </div>
+    
+      
 </div>
 
 <div class="col-md-4" >
  <div class="form-group">
  <div class="col-lg-10">
-    <%= f.label :quantity_shipped %>
+    <%= f.label "Cantidad en Kilos" %>
      </div>
     <div class="col-lg-10">
       <%= f.text_field :quantity_shipped, :class => 'form-control' %>
@@ -353,29 +307,16 @@
   </div>
   <div class="form-group">
   <div class="col-lg-10">
-    <%= f.label :quantity_affected%>
+    <%= f.label "Cantidad en Carretes"%>
      </div>
     <div class="col-lg-10">
       <%= f.text_field :quantity_affected, :class => 'form-control' %>
     </div>
     <%=f.error_span(:quantity_affected) %>
   </div>
+
   <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :return_potential %>
-     </div>
-    <div class="col-lg-10">
-      <%= f.text_field :return_potential, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:return_potential) %>
-  </div>
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :return_value %>
-     </div>
-    <div class="col-lg-10">
-      <%= f.text_field :return_value, :class => 'form-control' %>
-    </div>
+
     <%=f.error_span(:return_value) %>
   </div>
 </div>
@@ -383,25 +324,8 @@
 
 <div class="col-md-4" >
 
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :claim_potential %>
-     </div>
-    <div class="col-lg-10">
-      <%= f.text_field :claim_potential, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:claim_potential) %>
-  </div>
 
-  <div class="form-group">
-    <div class="col-lg-10">
-    <%= f.label :claim_value %>
-      </div>
-    <div class="col-lg-10">
-      <%= f.text_field :claim_value, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:claim_value) %>
-  </div>
+
 </div>
 </div>
 <br>
@@ -411,6 +335,7 @@
 <div class="row">
 <div class="col-lg-12">
     <h3 class = "titulo" style = "margin :0px 0px 5px 0;">Customer Information</h3>
+    <br>
     </div>
   <div class="col-md-4" >
 <div class="form-group">
@@ -468,34 +393,10 @@
 <br>
 <div class="row">
 <div class="col-lg-12">
-    <h3 class = "titulo">Description of the problem
-</h3>
+    <h3 class = "titulo">Description of the problem</h3>
+    <br>
     </div>
-  <div class="col-md-4" >
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :source %>
-    </div>
-    <div class="col-lg-10">
-      <%= f.text_field :source, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:source) %>
-  </div>
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :specific_problem_id %>
-    </div>
-    <div class="col-lg-10">
-    <div class="field_problem">
-    <%= render "field_problem" , f: f  %>  
 
-
-    </div>
-   
-    </div>
-    <%=f.error_span(:specific_problem_id) %>
-  </div>
-</div>
  <div class="col-md-8" >
   <div class="form-group">
   <div class="col-lg-10">
@@ -508,156 +409,22 @@
   </div>
 </div>
 </div>
- <hr>
-<br>
-
-  <div class="row">
-
-  <div class="col-md-6" >
-   <div class="col-lg-10">
-    <h3 class = "titulo" >Preliminary Conclusion
-</h3>
-    </div>
-<div class="form-group">
-<div class="col-lg-10">
-    <%= f.label :preliminary_conclusions %>
-     </div>
-    <div class="col-lg-12">
-      <%= f.text_area :preliminary_conclusions, :class => 'form-control tarea' %>
-    </div>
-    <%=f.error_span(:preliminary_conclusions) %>
-  </div>
-  </div>
-  <div class="col-md-6" >
-  <div class="col-lg-10">
-    <h3 class = "titulo">Preliminary investigation
-</h3>
-    </div>
-   <div class="form-group">
-<div class="col-lg-10">
-    <%= f.label :preliminary_investigation%>
-     </div>
-    <div class="col-lg-12">
-      <%= f.text_area :preliminary_investigation, :class => 'form-control tarea' %>
-    </div>
-    <%=f.error_span(:preliminary_investigation) %>
-  </div>
-  
-  </div>
-  </div>
-  
-  
-  <hr>
-<br>
-  
-
-<div class="row">
-<div class="col-lg-12">
-    <h3 class = "titulo">Plant report
-</h3>
-    </div>
-  <div class="col-md-6" >
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :research_results %>
-     </div>
-    <div class="col-lg-12">
-      <%= f.text_area :research_results, :class => 'form-control tarea' %>
-    </div>
-    <%=f.error_span(:research_results) %>
-  </div>
-
-  </div>
-
-  <div class="col-md-6" >
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :conclusions_plant %>
-    </div>
-    <div class="col-lg-12">
-      <%= f.text_area :conclusions_plant, :class => 'form-control tarea'  %>
-    </div>
-    <%=f.error_span(:conclusions_plant) %>
-  </div>
-  </div>
-</div>
-
 <hr>
-<br>
-<div class="row">
-<div class="col-lg-12">
-    <h3 class = "titulo">Action Plan
+  
+  
 
-</h3>
-    </div>
-  <div class="col-md-10" >
-<div class="form-group">
-<div class="col-lg-10">
-    <%= f.label :action_plan %>
-    </div>
-    <div class="col-lg-10">
-      <%= f.text_area :action_plan, :class => 'form-control tarea' %>
-    </div>
-    <%=f.error_span(:action_plan) %>
-  </div>
-  </div>
-
-  </div>
-
-<hr>
-<br>
-
-<div class="row">
-<div class="col-lg-12">
-    <h3 class = "titulo" >
-Closing the claim
+    <%= f.hidden_field :type_report, :value => "prestamos" %>
 
 
-</h3>
-    </div>
-  <div class="col-md-4" >
 
 
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :date_close%>
-    </div>
-    <div class="col-lg-10">
-      <%= f.date_field :date_close, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:date_close) %>
-  </div>
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :close_claim%>
-    </div>
-    <div class="col-lg-10">
-      <%= f.check_box :close_claim, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:close_claim) %>
-  </div>
 
-  </div>
-  <div class="col-md-8" >
-  <div class="form-group">
-  <div class="col-lg-10">
-    <%= f.label :validation_claim%>
-    </div>
-    <div class="col-lg-10">
-      <%= f.text_area :validation_claim, :class => 'form-control tarea' %>
-    </div>
-    <%=f.error_span(:validation_claim) %>
-  </div>
-  </div>
-  </div>
 
-    <%= f.hidden_field :type_report, :value => "rcc" %>
-
-  <div class="form-group" style = "text-align:center">
+  <div class="form-group" style = "text-align: right;">
     
-      <%= f.submit nil, class: 'btn btn-primary'%>
+      <%= f.submit nil, :class => 'btn btn-primary btn1'+ "?prestamos=pres" %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                reports_path, :class => 'btn btn-default' %>
+                index_prestamos_path, :class => 'btn btn-default' %>
     
   </div>
 
@@ -919,5 +686,10 @@ $(document).on('turbolinks:load',function()
   width: 101px;
   padding: 0px !important;
   margin: 0px !important;
+}
+
+.btn1{
+  background-color: #eb5e07 !important;
+  border: 1px solid #eb5e07 !important;
 }
 </style>

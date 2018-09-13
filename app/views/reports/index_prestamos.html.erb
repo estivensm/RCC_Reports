@@ -2,19 +2,21 @@
 <div class="page-header">
    <div class="row">
 
-      <div class = "col-md-6">
-            <p class="title-h2" style="margin: 9px; font-size: 33px;"><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %> <span class="label label-primary"><%=@reports.count%></span> </p>
+      <div class = "col-md-6" style="padding-left: 16px;">
+            <p class="title-h2" style="margin: 9px; font-size: 33px; margin-left: 2px">Developments <span class="label label-primary"><%=@reports.where(type_report: "prestamos").count%></span> </p>
+         
+
          </div>
 
        <div class="col-md-6 text-right">
-         <%= link_to "New Report",new_report_path + "?type=rcc",
+         <%= link_to "New Report",new_report_path + "?type=pres",
             :class => 'btn btn-primary' %>
       </div>
    </div>
 </div>
 
 
-<div class="row busqueda" style="padding: 5px;">
+<div class="row busqueda" style="padding: 5px; padding-left: 76px;">
    <div class="col-md-12" style="padding: 0px;">
 
       <%= form_tag(@route, :method => "get", id: "search-form") do %>
@@ -22,9 +24,6 @@
 
       <%= select_tag 'search4', options_for_select(Merge.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh4", include_blank: true }%>
 
-      <%= select_tag 'search6', options_for_select(FilamentCount.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh7", include_blank: true }%>
-
-      <%= select_tag 'search5', options_for_select(YarnType.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh5", include_blank: true }%>
 
       <%=select_tag 'search1', options_for_select(Customer.all.collect{ |u| ["#{u.name}", u.id, ] }),{:class => "form-control sh1", include_blank: true }%>
 
@@ -37,7 +36,7 @@
          <i class="fas fa-search" style=""></i>
       <% end -%>
 
-      <%= link_to reports_path, :title => "Cancelar Filtros", class: "btn btn-warning can" do%>
+      <%= link_to index_prestamos_path, :title => "Cancelar Filtros", class: "btn btn-warning can" do%>
          <i class="fas fa-ban"></i>
       <% end -%>
 
@@ -53,12 +52,9 @@
          <th><%= model_class.human_attribute_name(:code) %></th>
          <th><%= model_class.human_attribute_name(:product) %></th>
          <th>Merge</th>
-         <th>Filament count</th>
-         <th>Yarn type</th>
-         <th><%= model_class.human_attribute_name(:customer_report_date) %>
+         <th><%= model_class.human_attribute_name(:Fecha_de_Prestamo) %>
          <th><%= model_class.human_attribute_name(:customer_id) %></th>
-         <th>Plant</th>
-         <th><%= model_class.human_attribute_name(:reporter) %></th>
+         <th><%= model_class.human_attribute_name(:Prestado_a) %></th>
          <th>Seguimiento</th>
          <th style="text-align: center;"><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
@@ -69,11 +65,8 @@
          <td><%= report.code %></td>
          <td><%= report.product_name %></td>
          <td><%= report.merge.name%></td>
-         <td><%= report.filament_count.name%></td>
-         <td><%= report.yarn_type.name if report.yarn_type %></td>
          <td><%= report.customer_report_date ? get_date(report.customer_report_date) : report.customer_report_date %></td>
          <td><%= report.customer.name if report.customer %></td>
-         <td><%= report.plant.name if report.plant %></td>
          <td><%= report.reporter  %></td>
          <td  style="width: 1px; padding: 0px; padding-top: 10px; padding-left: 18px;"><%=link_to "Tracings",seguimientos_all_path(report.id), :class => 'btn btn-primary btn-xs' %></td>
          <td>
@@ -89,12 +82,11 @@
                   
                   <ol style="padding-left: 10px;">
                      <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_report_path(report) + "?type=rcc", :class => 'btn btn-info btn-xs' %>     
+                        edit_report_path(report) + "?prestamos=pres", :class => 'btn btn-info btn-xs' %>     
                   </ol>
 
                   <ol>
-                     <%= link_to 'Mostrar',
-                        report_path(report) + "?type=rcc", :class => 'btn btn-default btn-xs' %>
+                     <%= link_to 'Mostrar',report_path(report)+ "?prestamos=pres", :class => 'btn btn-default btn-xs' %>
                   </ol>
                          
                   
@@ -199,6 +191,7 @@
 </style>
 
 <script>
+
  $('.sh').val(<%=params[:search]%>) ;
  $('.sh1').val(<%=params[:search1]%>) ;  
  $('.sh2').val(<%=params[:search2]%>) ;

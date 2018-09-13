@@ -66,16 +66,37 @@
     <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
    <th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Production Date:</span> <%@report.product_dates.each do |date|%><%=get_date(date.date)%>, <%end%>  </td>
   <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
-   
-      
-      
   </tr>
     <tr>
+
+
+<th colspan = "5" style = "text-align:left">
+  <span class = "titlel" style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Product Images</span></td>
+
+  </tr> 
+
+<%@report.product_images.each do |image|%>
+<tr>
+<th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
+<th style = "text-align:left;width:30%"><span style = "font-weight:bold;margin-right:5px;">Number:</span><%= image.number%> </td>
+<hr>
+
+<th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
+<th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Images:</span><%= (link_to "Archivo",image.image_url, class: "color") if image.image_url %> </td>
+
+ <hr> 
+<th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
+<th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Description:</span><%= image.description%> </td>
+<hr>
+    </tr>
+
+<% end -%>
+
+  <br>
   <th colspan = "5" style = "text-align:left">
   <span class = "titlel"  style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Market Information</span></td>
     </tr> 
     <tr>
-<% if @report.type_report == "rcc"%>
    <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
    <th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Segment:</span> <%=@array_segment%></td>
        <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
@@ -116,23 +137,7 @@
   <th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Claims potential Value:</span><%=@report.claim_value%></td>
    <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
   </tr>
-<% else %>
-   <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
-   <th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Segment:</span> <%=@array_segment%></td>
-    
-  <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
-     <th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Customer End Use:</span><%=@array_use%> </td>
 
-       <tr>
-    <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
-   <th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Cantidad En, kg:</span><%=@report.quantity_shipped%></td>
-   <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
-       <th style = "text-align:left;;width:30%"><span style = "font-weight:bold;margin-right:5px;">Cantidad En Carretes:</span><%=@report.quantity_affected%> </td>
-     <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
-  </tr> 
-
-
-<% end -%>
   
   <tr>
  <th colspan = "5" style = "text-align:left">
@@ -160,17 +165,16 @@
     <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
     </tr> 
       <tr>
-    <% if @report.type_report == "rcc"%>
       <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
-      <th style = "text-align:left;width:30%"><span style = "font-weight:bold;margin-right:5px;">Address:</span><%=@report.customer.address%><% end -%></td>
-
+      <th style = "text-align:left;width:30%"><span style = "font-weight:bold;margin-right:5px;">Address:</span><%=@report.customer.address%></td>
     <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
     <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
     <th style = "text-align:left;"><span style = "font-weight:bold;margin-right:5px;"></td>
     </tr> 
-
  </table>
  <br>
+
+
      <table class ="enc1" style = "margin-top:0px !important;">
      <tr>
   <th style = "text-align:left;    padding-top: 30px;">
@@ -178,32 +182,29 @@
     </tr> 
     
   <tr>
-<% if @report.type_report == "rcc"%>
-  <th style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;"><span style = "font-weight:bold;margin-right:5px;">Source:</span> <%=@report.source%></td>
+  <th style = "margin-right:5px;text-align:left!important;font-size:16px;
+"><span style = "font-weight:bold;margin-right:5px;">Source:</span> <%=@report.source%></td>
    </tr>
    <tr>
 
-
   <th  style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;"><span style = "font-weight:bold;margin-right:5px;">Specific Problem:</span> <%=@report.specific_problem.name%></td>
 
-<% else %>
-
+<% if @tipo == "prestamos" %>
+  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;"><span style = "font-weight:bold;margin-right:5px;">Specific Problem:</span></td>
 <% end -%>
-   </tr>
      <tr>
-    <th style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;
+    <th style = "margin-right:5px;text-align:left!important;font-size:16px;
 "><span style = "font-weight:bold;margin-right:5px;">Description:</span> <%=@report.description_problem%></td>
    </tr>
      </table>
    <br>
-   <% if @report.type_report == "rcc"%>
     <table class ="enc1" style = "margin-top:0px !important;">    
       <tr>
   <th  style = "text-align:left;    padding-top: 30px;">
   <span class = "titlel" style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Preliminary Investigation</span></td>
     </tr> 
     <tr>
-  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;
+  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;
 "><span style = "font-weight:bold;margin-right:5px;">Description:</span> <%=@report.preliminary_investigation%></td>
    </tr>
   </table>
@@ -214,7 +215,7 @@
   <span class = "titlel" style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Preliminary conclusions</span></td>
     </tr> 
     <tr>
-  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;
+  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;
 "><span style = "font-weight:bold;margin-right:5px;">Description:</span> <%=@report.preliminary_conclusions%></td>
    </tr>
     </table>
@@ -226,30 +227,42 @@
   <span class = "titlel" style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Plant Report</span></td>
     </tr> 
     <tr>
-  <th style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;
+  <th style = "margin-right:5px;text-align:left!important;font-size:16px;
 "><span style = "font-weight:bold;margin-right:5px;">Research Results:</span> <%=@report.research_results%></td>
    </tr>
      <tr>
-  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;
+  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;
 "><span style = "font-weight:bold;margin-right:5px;">Conclusions Plant:</span> <%=@report.conclusions_plant%></td>
    </tr>
-    </table> 
-<br>
-    <table class ="enc1" style = "margin-top:0px !important;">    
-     <tr>
-<% @seguimientos.each do  |seg|%>
-  <th  style = "text-align:left;    padding-top: 30px;">
-  <span class = "titlel" style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Seguimiento</span></td>
-    </tr> 
-    <tr>
-  <th style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;"><span style = "font-weight:bold;margin-right:5px;">Fecha de Seguimiento:</span> <%=  get_date(seg.created_at)  %></td>
-   </tr>
-     <tr>
-  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;padding-left: 80px;"><span style = "font-weight:bold;margin-right:5px;">Description:</span> <%= seg.description %></td>
-   </tr>
     </table>  
-    <% end -%>
-<% end -%>   
+    <br>
+
+    <table class ="enc1" style = "margin-top:0px !important;">   
+     <tr>
+  <th  style = "text-align:left;    padding-top: 30px;">
+  <span class = "titlel" style = "font-weight:bold;margin:0 5px 0 30px;text-align:left!important;font-size:18px;">Seguimientos</span></td>
+    </tr> 
+    <% @seguimientos.each do  |seg|%>
+<tr>
+  <th style = "margin-right:5px;text-align:left!important;font-size:16px;
+"><span style = "font-weight:bold;margin-right:5px;">Fecha de Seguimiento:</span><%=get_date(seg.created_at)%></td>
+</tr>
+
+<tr>
+  <th style = "margin-right:5px;text-align:left!important;font-size:16px;
+"><span style = "font-weight:bold;margin-right:5px;">Archivo:</span><%= (link_to "Archivo",seg.attachment_url, class: "color") if seg.attachment_url %></td>
+</tr>
+
+<tr>
+  <th  style = "margin-right:5px;text-align:left!important;font-size:16px;
+"><span style = "font-weight:bold;margin-right:5px;">Description:</span><%= seg.description %></td>
+<hr>
+   </tr>
+   <% end -%>
+    </table>  
+
+    <br>
+
   
 
      <style>
@@ -290,6 +303,16 @@
 font-weight: 100;
    color: rgb(127, 127, 127);
 
+  }
+
+  .color{
+    text-decoration: underline;
+    color: #EB5E07;
+  }
+
+  .color:hover{
+    text-decoration: underline;
+    color: #EB5E07;
   }
   
   

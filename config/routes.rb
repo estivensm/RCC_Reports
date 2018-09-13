@@ -20,12 +20,17 @@ Rails.application.routes.draw do
   resources :merges
   resources :filament_counts
   resources :customers
+
   root "pages#home"
   get '/get_country/:id', to: 'reports#get_country', as: 'get_country'
   get '/tracing_report/:id', to: 'reports#tracing_report', as: 'tracing_report'
   post 'create_tracing' , to: 'reports#create_tracing', as: 'create_tracing'
   get "seguimientos_all/:id", to: "reports#seguimientos_all", as: "seguimientos_all"
   post "create_plant", to: "reports#create_plant" , as: "create_plant"
+
+
+  get "index_prestamos", to: "reports#index_prestamos", as: "index_prestamos"
+  
   post "create_yarn", to: "reports#create_yarn" , as: "create_yarn"
   post "create_merge", to: "reports#create_merge" , as: "create_merge"
   post "create_filament", to: "reports#create_filament" , as: "create_filament"
