@@ -44,6 +44,7 @@
 #  validation_claim          :text
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
+#  type_report               :string
 #
 # Indexes
 #
@@ -72,8 +73,9 @@ class Report < ApplicationRecord
   accepts_nested_attributes_for :product_dates, :allow_destroy => true #acepta atributos del modelo de product_dates
 
   accepts_nested_attributes_for :product_images , :allow_destroy => true#acepta atributos del modelo de product_imagenes
-    
- 
+
+ scope :reports, -> {where(type_report: "rcc")}
+ scope :developments, -> {where(type_report: "prestamos")}
 
 def self.search(search, search1, search2 , search3, search4, search5, search6)
 
@@ -88,6 +90,21 @@ def self.search(search, search1, search2 , search3, search4, search5, search6)
 
   product.customer.plant.reporter.yarn_type.filament_count.merge_scope
 
+end
+
+
+def self.search1(search, search1, search2 , search3, search4)
+
+ search != "" ? (scope :product, -> { where(product_name: search) }) : (scope :product, -> { where.not(product_name: nil) })
+ search1 != "" ? (scope :customer, -> { where(customer_id: search1) }) : (scope :customer, -> { where.not(customer_id: nil) })
+ search2 != "" ? (scope :plant, -> { where(plant_id: search2) }) : (scope :plant, -> { where.not(plant_id: nil) })  
+ search3 != "" ? (scope :reporter, -> { where("reporter like '%#{search3.downcase}%' or reporter like '%#{search3.upcase}%'  or reporter like '%#{search3.capitalize}%' ") }) : (scope :reporter, -> { where.not(id: nil) }) 
+ search4 != "" ? (scope :merge_scope, -> { where(merge_id: search4) }) : (scope :merge_scope, -> { where.not(merge_id: nil) })
+
+
+ product.customer.plant.reporter.merge_scope
+    
+    ## type_report
 end
 
 

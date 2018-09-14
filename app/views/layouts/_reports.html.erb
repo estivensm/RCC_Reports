@@ -10,6 +10,7 @@
       </button>
      
     </div>
+<%menu_index%>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -17,11 +18,12 @@
       <ul class="nav navbar-nav">
         
   
-        <li class="active"><%= link_to "Reports", reports_path %></li>
-        <li><%= link_to "Customers", customers_path %></li>
+        <li class="<%= @menu[0]%>"><%= link_to "Reports", reports_path %></li>
+        <li class="<%= @menu[2]%>"><%= link_to "Prestamos", index_prestamos_path %></li>
+        <li class="<%= @menu[1]%>"><%= link_to "Customers", customers_path %></li>
+
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i style = "margin:0px 10px 0px 10px; " class="fa fa-cogs" aria-hidden="true"></i>
-Information<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i style = "margin:0px 10px 0px 10px; " class="fa fa-cogs" aria-hidden="true"></i>Information<span class="caret"></span></a>
           <ul class="dropdown-menu">
             
             <li><%= link_to "Filaments Counts", filament_counts_path %></li>
@@ -41,3 +43,11 @@ Information<span class="caret"></span></a>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+<style>
+  .active a{
+    background-color: #eb5e07 !important;
+    color: #fff !important;
+  }
+</style>

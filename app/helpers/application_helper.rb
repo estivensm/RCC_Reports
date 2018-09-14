@@ -49,4 +49,25 @@ def estado_contador(cont)
     end
       
 end
+
+def menu_index
+
+  @menu = ["", "", "", ""]
+
+  if (controller_name == "reports" && action_name == "index")   ||  (controller_name == "reports" && action_name == "new")
+    @menu = ["active", "", "", ""]
+
+    elsif controller_name == "customers"
+      @menu = ["", "active", "", ""]
+
+    elsif action_name == "index_prestamos"
+      @menu = ["", "", "active", ""]
+
+  end
+
+
+  return @menu
+  
+ end
+
 end

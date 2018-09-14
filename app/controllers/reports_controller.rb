@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-  before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :set_report, only: [:show, :edit, :update, :destroy, :edit_prestamo]
 
 
   before_action :authenticate_user!
@@ -7,23 +7,23 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-     @plants = Plant.all
-     @yarns = YarnType.all
+    @plants = Plant.all
+    @yarns = YarnType.all
     @merges = Merge.all
     @filaments = FilamentCount.all
     @customers = Customer.all
     @problems = SpecificProblem.all
   if params[:search] || params[:search1] || params[:search2] || params[:search3]|| params[:search4] || params[:search5] || params[:search6]
 
-    @reports1 = Report.search(params[:search],params[:search1],params[:search2],params[:search3],params[:search4],params[:search5],params[:search6]).order(created_at: :desc)
+    @reports1 = Report.reports.search(params[:search],params[:search1],params[:search2],params[:search3],params[:search4],params[:search5],params[:search6]).order(created_at: :desc)
 
   else 
       
-       @reports1 = Report.all.order(created_at: :desc)
+       @reports1 = Report.reports.order(created_at: :desc)
 
   end
 
-@reports = @reports1.paginate(page: params[:page],:per_page => 30)
+  @reports = @reports1.paginate(page: params[:page],:per_page => 30)
 
   end
   
@@ -31,6 +31,7 @@ class ReportsController < ApplicationController
 
     @report = Report.find(params[:id])
     @seguimientos = @report.seguimientos
+
     
   end
 
@@ -38,12 +39,18 @@ class ReportsController < ApplicationController
   # GET /reports/1
   # GET /reports/1.json
   def show
-     @plants = Plant.all
-     @yarns = YarnType.all
+    @tipo = params[:type]
+
+    @seguimientos = @report.seguimientos
+
+
+    @plants = Plant.all
+    @yarns = YarnType.all
     @merges = Merge.all
     @filaments = FilamentCount.all
     @customers = Customer.all
     @problems = SpecificProblem.all
+
     @array_use = ""
     a = ["Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]
     a.each do |use|
@@ -93,6 +100,8 @@ class ReportsController < ApplicationController
  
   # GET /reports/new
   def new
+   @tipo = params[:type]
+
    @plants = Plant.all
    @yarns = YarnType.all
    @merges = Merge.all
@@ -116,6 +125,8 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
+    @tipo = params[:type]
+    @prestamos = params[:prestamos]
     @plants = Plant.all
     @yarns = YarnType.all
     @merges = Merge.all
@@ -139,14 +150,59 @@ class ReportsController < ApplicationController
     end  
 end
 
+def index_prestamos
+    @plants = Plant.all
+    @yarns = YarnType.all
+    @merges = Merge.all
+    @filaments = FilamentCount.all
+    @customers = Customer.all
+    @problems = SpecificProblem.all
+  if params[:search] || params[:search1] || params[:search2] || params[:search3]|| params[:search4]
 
+    @reports1 = Report.developments.search1(params[:search],params[:search1],params[:search2],params[:search3],params[:search4]).order(created_at: :desc)
+
+  else 
+      
+       @reports1 = Report.developments.order(created_at: :desc)
+
+  end
+
+  @reports = @reports1.paginate(page: params[:page],:per_page => 30)
+  end
+
+def edit_prestamo
+    @tipo = params[:type]
+
+    @plants = Plant.all
+    @yarns = YarnType.all
+    @merges = Merge.all
+    @filaments = FilamentCount.all
+    @customers = Customer.all
+    @problems = SpecificProblem.all
+    @code = @report.code
+    @array_use = Array.new
+    a = ["Intimate Apparel", "Swimwear", "Legwear", "Ready to Wear", "Bandages"]
+    a.each do |use|
+      if @report.customer_end_use[use]
+          @array_use.push(use)
+       end
+    end
+    @array_segment = Array.new
+    b = ["Core Spinnig", "Weaving", "Circular Knit", "Covering", "Direct Knit", "Warp Knitting", "Raschel", "Seamless" , "Narrows"]
+    b.each do |use|
+      if @report.segment[use]
+          @array_segment.push(use)
+      end
+    end  
+end
 
   # POST /reports
   # POST /reports.json
   def create
+
     @report = Report.new(report_params)
-     @plants = Plant.all
-     @yarns = YarnType.all
+    @plants = Plant.all
+    @yarns = YarnType.all
     @merges = Merge.all
     @filaments = FilamentCount.all
     @customers = Customer.all
@@ -191,6 +247,8 @@ end
       format.json { head :no_content }
     end
   end
+
+
 
 
 def destroy_multiple
@@ -286,6 +344,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:count, :code, :autor, :product_name, :customer_report_date, :report_start_date, :plant_id, :title, :value, :decitex, :denier, :yarn_type_id, :merge_id, :filament_count_id, {:segment => []}, {:customer_end_use => []}, :invoice_invista, :invoice_mag, :quantity_shipped, :quantity_affected, :return_potential, :return_value, :claim_potential, :claim_value, :customer_id, :reporter, :phone, :email, :source, :specific_problem_id, :description_problem, :preliminary_investigation, :preliminary_conclusions, :research_results, :conclusions_plant, :action_plan, :close_claim, :date_close, :validation_claim ,product_images_attributes: [:id, :number, :description, :image, :_destroy],product_dates_attributes: [:id, :number, :date, :_destroy] )
+      params.require(:report).permit(:count, :type_report, :code, :autor, :product_name, :customer_report_date, :report_start_date, :plant_id, :title, :value, :decitex, :denier, :yarn_type_id, :merge_id, :filament_count_id, {:segment => []}, {:customer_end_use => []}, :invoice_invista, :invoice_mag, :quantity_shipped, :quantity_affected, :return_potential, :return_value, :claim_potential, :claim_value, :customer_id, :reporter, :phone, :email, :source, :specific_problem_id, :description_problem, :preliminary_investigation, :preliminary_conclusions, :research_results, :conclusions_plant, :action_plan, :close_claim, :date_close, :validation_claim ,product_images_attributes: [:id, :number, :description, :image, :_destroy],product_dates_attributes: [:id, :number, :date, :_destroy] )
     end
 end
